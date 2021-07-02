@@ -1,0 +1,103 @@
+* {
+    /*-fx-purple: #8B8BAE;*/
+    /*-fx-dark-green: #374B4A;*/
+    /*-fx-light-green: #DAE8CF;*/
+    /*-fx-dark-purple: #2C1320;*/
+    /*-fx-dark-pink: #823038;*/
+    /*-fx-purple: #E87461;*/
+    /*-fx-dark-green: #000000;*/
+    /*-fx-light-green: #F5FBEF;*/
+    /*-fx-dark-purple: #008148;*/
+    /*-fx-dark-pink: #EF8A17;*/
+    -fx-first: #67597A;
+    -fx-second: #F5FBEF;
+    -fx-third: #544E61;
+    -fx-fourth: #008148;
+    -fx-fifth: #CB9CF2;
+
+}
+
+
+.MainPanel{
+    -fx-background-color: -fx-second;
+
+}
+* {
+    -fx-font-family: Arial;
+}
+#PlainText {
+    -fx-font-family: Arial;
+    -fx-text-fill: -fx-first;
+    -fx-font-size: 20;
+    -fx-wrap-text: true;
+}
+
+#GameTitle {
+    -fx-text-fill: -fx-fifth;
+}
+#Title {
+    -fx-font-size: 20;
+}
+#MainMenuButtons {
+    -fx-font-weight: bold;
+    -fx-font-size: 40;
+}
+
+Button{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 20;
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-underline: true;
+    -fx-alignment: BASELINE_LEFT;
+    -fx-text-fill: -fx-first;
+    -fx-font-size: 38;
+}
+Button:hover {
+    -fx-text-fill: -fx-third;
+    -fx-font-size: 38;
+}
+
+RadioButton {
+    -fx-focus-traversable: false;
+}
+RadioButton:hover{
+    -fx-cursor: hand;
+}
+
+ToggleButton {
+    -fx-focus-traversable: false;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-color: -fx-fourth;
+    -fx-min-width: 64;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+}
+ToggleButton:pressed{
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+    -fx-scale-z: 0.9;
+
+}
+ToggleButton:selected:hover {
+    -fx-background-color: -fx-fifth;
+}
+ToggleButton:hover {
+    -fx-cursor: hand;
+    -fx-background-color: -fx-fifth;
+}
+ToggleButton:selected {
+    -fx-background-color: -fx-third;
+}
+
+TextField {
+    -fx-background-radius: 8;
+
+}
+TextField:focused {
+    -fx-focus-color: -fx-fifth ;
+    -fx-faint-focus-color: -fx-fifth;
+    -fx-background-insets: 0 0 0 0, 0, -2, 0;
+}
