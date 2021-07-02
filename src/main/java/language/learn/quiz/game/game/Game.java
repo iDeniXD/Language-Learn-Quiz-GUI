@@ -21,20 +21,17 @@ import java.net.URL;
 import static com.sun.javafx.scene.control.skin.Utils.getResource;
 
 public class Game {
-    public static void start() {
-        setScene();
-        // Scene shows up, then FXMLLoader calls method initialize(), which continues program
-    }
     static Scene scene = null;
-    private static void setScene() {
+    public static void start() {
         try {
             scene = getScene();
             show(scene);
+            // Scene shows up, then FXMLLoader calls method initialize(), which continues program
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    static private Scene getScene() throws IOException {
+    private static Scene getScene() throws IOException {
         if (scene == null){
             Parent FXMLFile = FXMLLoader.load(Main.class.getResource("game/GameSetup.fxml"));
             scene = new Scene(FXMLFile);
@@ -42,7 +39,6 @@ public class Game {
         }
         return scene;
     }
-
     private static void show(Scene scene) {
         Main.currentStage.setScene(scene);
     }
@@ -87,68 +83,4 @@ public class Game {
     public void launchGame(ActionEvent actionEvent) {
 
     }
-
-//    public static void start(){
-//        var game = new Game();
-//        game.setScene();
-//        game.launch();
-//    }
-//
-//    static Scene scene = null;
-//    public void setScene() {
-//        try {
-//            scene = getScene();
-//            setup(scene);
-//            show(scene);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private void show(Scene scene) {
-//        Main.currentStage.setScene(scene);
-//    }
-//
-//    @FXML
-//    ToggleGroup typeOfGame;
-//    @FXML
-//    ToggleButton partOfSpeech;
-//
-//    private void setup(Scene scene) {
-//        System.out.println(typeOfGame);
-////        System.out.println(((RadioButton)scene.lookup("#PlainText")).getText());
-////        System.out.println(partOfSpeech.getText());
-////        for (Toggle button :
-////                typeOfGame.getToggles()) {
-////            System.out.println(button);
-////            ((RadioButton) button).setText(ENG_RUS_mixed.getType(Integer.parseInt(((RadioButton)button).getText().strip())));
-////        }
-//
-//    }
-//
-//    static private Scene getScene() throws IOException {
-//        if (scene == null){
-//            Parent FXMLFile = FXMLLoader.load(Main.class.getResource("game/GameSetup.fxml"));
-//            scene = new Scene(FXMLFile);
-//            scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
-//        }
-//        return scene;
-//    }
-//
-//    private void launch() {
-//    }
-//
-//    //Button EXIT
-//    public void goToMainMenu(ActionEvent actionEvent) {
-//        Main.currentStage.setScene(Main.menuScene);
-//    }
-//
-//    //When toggleButton is pressed, it changes its label
-//    public void changeText(ActionEvent actionEvent) {
-//        var button = (ToggleButton)actionEvent.getSource();
-//        button.setText((button.getText().equals("Yes") ? "No" : "Yes"));
-//    }
-//
-//    public void launchGame(ActionEvent actionEvent) {
-//    }
 }

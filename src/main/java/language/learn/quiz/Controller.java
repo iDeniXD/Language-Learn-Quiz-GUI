@@ -17,6 +17,6 @@ public class Controller {
     }
 
     public void MainExit(ActionEvent actionEvent) {
-        System.exit(0);
+        Main.currentStage.close();
     }
 }

@@ -60,12 +60,6 @@ public class CSVFileWithRecords {
                     list.get(j)[i] = (list.get(j)[i].contains("true") ? "Yes" : "No");
                 }
             }
-            // Replacing 1/2/3 in Type of Game to ENG->RUS, RUS->ENG, MIXED
-            if (list.get(0)[i].contains("Type of Game")){
-                for (int j = 1; j < list.size(); j++) {
-                    list.get(j)[i] = ENG_RUS_mixed.getType(Integer.parseInt(list.get(j)[i].strip()));
-                }
-            }
         }
 
         return list;

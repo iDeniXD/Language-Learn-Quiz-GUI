@@ -1,6 +1,7 @@
 package language.learn.quiz.game.result;
 
 import language.learn.quiz.game.CSV.CSVFileWithRecords.CSVFileWithRecords;
+import language.learn.quiz.game.typeOfGame.ENG_RUS_mixed;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,6 +33,6 @@ public class GameResult {
     private String[] prepareRecord(int numberOfWords, int typeOfGame, boolean usingPartsOfSpeech, String name) {
         SimpleDateFormat formatter= new SimpleDateFormat("HH:mm:ss yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
-        return new String[]{name,String.valueOf(numberOfWords), String.valueOf(typeOfGame), String.valueOf(usingPartsOfSpeech), String.valueOf(points),formatter.format(date)};
+        return new String[]{name,String.valueOf(numberOfWords), String.valueOf(ENG_RUS_mixed.getType(typeOfGame)), String.valueOf(usingPartsOfSpeech), String.valueOf(points),formatter.format(date)};
     }
 }
