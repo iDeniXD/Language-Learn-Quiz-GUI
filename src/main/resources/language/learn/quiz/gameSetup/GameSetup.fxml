@@ -37,9 +37,21 @@
          </opaqueInsets>
          <children>
             <Label id="PlainText" text="Choose difficulty:" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+            <VBox id="PlainText" fx:id="testik" alignment="CENTER_LEFT" prefHeight="105.0" prefWidth="41.0" spacing="10.0" GridPane.columnIndex="1">
+               <children>
+                  <RadioButton id="PlainText" mnemonicParsing="false" text="1">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="difficulty" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton id="PlainText" mnemonicParsing="false" text="2" toggleGroup="$difficulty">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></RadioButton>
+                  <RadioButton id="PlainText" mnemonicParsing="false" text="3" toggleGroup="$difficulty" />
+               </children>
+            </VBox>
             <Label id="PlainText" text="Choose type of the game:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Label id="PlainText" prefHeight="101.0" prefWidth="271.0" text="Do you want to name the part of speech of the given word?" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-            <ToggleButton fx:id="partOfSpeech" mnemonicParsing="false" onAction="#changeText" text="No" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <RadioButton id="PlainText" mnemonicParsing="false" text="1">
@@ -54,19 +66,18 @@
                   <Insets />
                </opaqueInsets>
             </VBox>
-            <VBox id="PlainText" alignment="CENTER_LEFT" prefHeight="105.0" prefWidth="41.0" spacing="10.0" GridPane.columnIndex="1">
+            <Label id="PlainText" prefHeight="101.0" prefWidth="271.0" text="Do you want to name the part of speech of the given word?" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <RadioButton id="PlainText" mnemonicParsing="false" text="1">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="difficulty" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton id="PlainText" mnemonicParsing="false" text="2" toggleGroup="$difficulty" />
-                  <RadioButton id="PlainText" mnemonicParsing="false" text="3" toggleGroup="$difficulty" />
+                  <ToggleButton fx:id="partOfSpeech" mnemonicParsing="false" onAction="#changeText" text="No" />
                </children>
             </VBox>
             <Label id="PlainText" text="Your username:" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-            <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <TextField fx:id="username" prefHeight="25.0" prefWidth="192.0" />
+               </children>
+            </VBox>
          </children>
       </GridPane>
       <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#launchGame" text="Play" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="36.0">

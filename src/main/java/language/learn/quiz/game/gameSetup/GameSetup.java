@@ -4,13 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import language.learn.quiz.Main;
 import language.learn.quiz.game.difficulty.Difficulty;
+import language.learn.quiz.game.start.GameStart;
 import language.learn.quiz.game.typeOfGame.ENG_RUS_mixed;
 import language.learn.quiz.game.user.User;
 
@@ -119,7 +122,7 @@ public class GameSetup {
 
     public void launchGame(ActionEvent actionEvent) {
         if (!highlight(objectsToChoose)) {
-            System.out.println("start");
+//            GameStart.throwWords();
         }
     }
     @FXML
@@ -133,20 +136,25 @@ public class GameSetup {
             label = new Label(objectsToChoose.get(o));
 
             boundsInScene = o.localToScene(o.getBoundsInLocal());
-
             label.setLayoutX(boundsInScene.getMinX());
             label.setLayoutY(boundsInScene.getMinY());
+
             label.setId("WarningText");
 
             rootAnchorPane.getChildren().add(label);
 
+            Label finalLabel = label;
+            Main.currentStage.widthProperty().addListener((observable, oldValue, newValue)->{
+                rootAnchorPane.getChildren().remove(finalLabel);
+            });
+            Main.currentStage.heightProperty().addListener((observable, oldValue, newValue)->{
+                rootAnchorPane.getChildren().remove(finalLabel);
+            });
             try {
-                Label finalLabel1 = label;
                 ((RadioButton)o).getToggleGroup().selectedToggleProperty().addListener((observable, oldValue, newValue)->{
-                    rootAnchorPane.getChildren().remove(finalLabel1);
+                    rootAnchorPane.getChildren().remove(finalLabel);
                 });
             } catch (Exception e){
-                Label finalLabel = label;
                 ((TextField)o).textProperty().addListener((observable, oldValue, newValue)->{
                     rootAnchorPane.getChildren().remove(finalLabel);
                 });
