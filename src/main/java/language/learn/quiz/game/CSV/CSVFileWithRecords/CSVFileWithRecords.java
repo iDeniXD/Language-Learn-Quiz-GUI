@@ -9,9 +9,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class CSVFileWithRecords {
 //    static String fileName = Objects.requireNonNull(CSVFileWithRecords.class.getClassLoader().getResource("records.csv")).getFile();
@@ -72,5 +74,12 @@ public class CSVFileWithRecords {
         } catch (IOException e){
             throw new RuntimeException("Could not find file", e);
         }
+    }
+
+    public static List<String> getUsernames() {
+        List<String[]> records = getRecords();
+        List<String> usernames = new ArrayList<>();
+        records.forEach(i -> usernames.add(i[0]));
+        return usernames;
     }
 }

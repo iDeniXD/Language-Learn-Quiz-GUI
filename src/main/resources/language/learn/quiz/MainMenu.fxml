@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="622.0" maxWidth="622.0" minHeight="622.0" minWidth="622.0" prefHeight="622.0" prefWidth="622.0" styleClass="MainPanel" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.Controller">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" styleClass="MainPanel" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.Controller">
    <children>
       <Button id="MainMenuButtons" layoutX="36.0" layoutY="249.0" mnemonicParsing="false" onAction="#HallOfFameShow" prefHeight="166.0" prefWidth="216.0" text="Hall of &#10;Fame" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="249.0">
          <font>

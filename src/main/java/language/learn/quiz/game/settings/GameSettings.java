@@ -102,8 +102,8 @@ public class GameSettings {
     @FXML
     public void launchGame(ActionEvent actionEvent) {
         var result = new GameResult();
-        result.numberOfWords = Difficulty.getNumberOfWords(words.getSelectedToggle());
-        result.typeOfGame = ENG_RUS_mixed.getType(typeOfGame.getSelectedToggle());
+//        result.numberOfWords = Difficulty.getNumberOfWords(words.getSelectedToggle());
+//        result.typeOfGame = ENG_RUS_mixed.getType(typeOfGame.getSelectedToggle());
 //        result.usingPartsOfSpeech = PartsOfSpeech.getUsingPartsOfSpeech(partOfSpeech);
 //        result.name = User.getName(username);
     }

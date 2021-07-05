@@ -42,6 +42,25 @@
     -fx-font-weight: bold;
     -fx-font-size: 40;
 }
+#WarningText {
+    -fx-font-family: Arial;
+    -fx-font-size: 20;
+    -fx-wrap-text: true;
+
+    -fx-text-fill: -fx-fifth;
+    -fx-translate-y: -2em;
+    -fx-translate-x: -2em;
+
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-scale-z: 1;
+
+    -fx-shape: "M 0,0 H 1 V .7 H .7 L .6,1 .5,.7 H 0 Z";
+    /*-fx-shape: "M 0,0 H 1 V .9 H .4 L .3,1 .2,.9 H 0 Z";*/
+    /*-fx-shape: "M 0,0 L 0,.9 1,.9 .4,.9 .3,1 .2,.9, 0,1 Z";*/
+    -fx-background-color: -fx-first;
+    -fx-background-insets: 0 -3 -10 -3;
+}
 
 Button{
     -fx-border-color: transparent;
@@ -70,7 +89,7 @@ ToggleButton {
     -fx-focus-traversable: false;
     -fx-background-radius: 0;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
-    -fx-background-color: -fx-fourth;
+    -fx-background-color: -fx-third;
     -fx-min-width: 64;
     -fx-text-fill: white;
     -fx-font-size: 20px;
@@ -89,7 +108,7 @@ ToggleButton:hover {
     -fx-background-color: -fx-fifth;
 }
 ToggleButton:selected {
-    -fx-background-color: -fx-third;
+    -fx-background-color: -fx-fourth;
 }
 
 TextField {

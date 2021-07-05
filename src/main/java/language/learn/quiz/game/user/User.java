@@ -1,10 +1,12 @@
 package language.learn.quiz.game.user;
 
 import language.learn.quiz.game.Additional;
+import language.learn.quiz.game.CSV.CSVFileWithRecords.CSVFileWithRecords;
 import language.learn.quiz.game.languages.Languages;
 import language.learn.quiz.game.word.Word;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class User {
@@ -63,5 +65,9 @@ public class User {
     private static boolean anyMatches(String answer, String toMatchTO) {
         return Stream.of(answer.split(",")).anyMatch(i ->
             Arrays.stream(toMatchTO.split(",")).anyMatch(j -> clean(j).matches(clean(i))));
+    }
+    static List<String> takenUsernames = CSVFileWithRecords.getUsernames();
+    public static boolean checkAvailability(String text) {
+        return ((!text.equals("")) && (!takenUsernames.contains(text)));
     }
 }

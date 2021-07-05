@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="622.0" maxWidth="622.0" minHeight="622.0" minWidth="622.0" prefHeight="622.0" prefWidth="622.0" styleClass="MainPanel" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.hallOfFame.HallOfFame">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" styleClass="MainPanel" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.hallOfFame.HallOfFame">
     <children>
         <Button mnemonicParsing="false" onAction="#goToMainMenu" text="Back" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="36.0">
             <font>

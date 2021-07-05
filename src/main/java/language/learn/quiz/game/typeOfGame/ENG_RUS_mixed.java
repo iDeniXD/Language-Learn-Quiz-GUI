@@ -59,8 +59,13 @@ public class ENG_RUS_mixed {
         return lang.get(index);
     }
 
-    public static int getType(Toggle selectedToggle) {
-
-        return 1;
+    public static short getTypeIndex(String text) {
+        var types = getTypes();
+        for (int i = 0; i < types.size(); i++) {
+            if(text.contains(String.valueOf(types.values().stream().toList().get(i)))){
+                return types.keySet().stream().toList().get(i).shortValue();
+            }
+        }
+        return -1;
     }
 }

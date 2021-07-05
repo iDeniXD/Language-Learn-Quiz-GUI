@@ -36,4 +36,14 @@ public class Difficulty {
     public static String getDifficulty(int parseInt) {
         return "%d words".formatted(getWords().get(parseInt));
     }
+
+    public static short getDifficultyIndex(String text) {
+        var words = getWords();
+        for (int i = 0; i < words.size(); i++) {
+            if(text.contains(String.valueOf(words.values().stream().toList().get(i)))){
+                return words.keySet().stream().toList().get(i).shortValue();
+            }
+        }
+        return -1;
+    }
 }
