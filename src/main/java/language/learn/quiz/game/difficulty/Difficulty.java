@@ -7,12 +7,6 @@ import language.learn.quiz.game.Additional;
 import java.util.LinkedHashMap;
 
 public class Difficulty {
-    public static int getNumberOfWords() {
-        var words = getWords();
-        System.out.println("Choose difficulty:");
-        showWords(words);
-        return words.get(Additional.getNumber());
-    }
 
     private static void showWords(LinkedHashMap<Integer, Integer> words) {
         for (int i :
@@ -21,16 +15,12 @@ public class Difficulty {
         }
     }
 
-    private static LinkedHashMap<Integer, Integer> getWords() {
+    public static LinkedHashMap<Integer, Integer> getWords() {
         LinkedHashMap<Integer, Integer> words = new LinkedHashMap<>();
         words.put(1,10);
         words.put(2,15);
         words.put(3,20);
         return words;
-    }
-
-    public static int getNumberOfWords(Toggle selectedToggle) {
-        return Integer.parseInt(((RadioButton)selectedToggle).getText().replaceAll("[^0-9]",""));
     }
 
     public static String getDifficulty(int parseInt) {

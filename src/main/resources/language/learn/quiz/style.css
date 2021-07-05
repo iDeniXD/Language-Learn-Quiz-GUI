@@ -31,16 +31,11 @@
     -fx-font-size: 20;
     -fx-wrap-text: true;
 }
-
-#GameTitle {
+#SecondaryText {
+    -fx-font-family: Arial;
     -fx-text-fill: -fx-fifth;
-}
-#Title {
-    -fx-font-size: 20;
-}
-#MainMenuButtons {
-    -fx-font-weight: bold;
-    -fx-font-size: 40;
+    -fx-font-size: 17;
+    -fx-wrap-text: true;
 }
 #WarningText {
     -fx-font-family: Arial;
@@ -55,6 +50,17 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 3, 3);
     -fx-background-color: -fx-first;
     -fx-background-insets: 0 -3 -10 -3;
+}
+
+#GameTitle {
+    -fx-text-fill: -fx-fifth;
+}
+#Title {
+    -fx-font-size: 20;
+}
+#MainMenuButtons {
+    -fx-font-weight: bold;
+    -fx-font-size: 40;
 }
 
 Button{

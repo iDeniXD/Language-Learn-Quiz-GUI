@@ -16,49 +16,34 @@ public class User {
         return Additional.getString();
     }
     private static String clean(String answer) {
-        return answer
-//                .replaceAll("\\s+"," ")
-                .strip();
-    }
-
-    private static String givenAnswer;
-    public static String getAnswer(){
-//        var s = "а1б2в3г4д5е6ё7ж8з9и0й/к*л-м+н.о,п/р?с\\т|у'ф\"х:ц;ч[ш]щ{ъ}ы=ь_э!ю@я#a$b%c^d&e9f8g7h6i5j4k2l]m[n}o{p)q(r*s&t^u%v$w#x@y!z".replaceAll("[^\\p{IsAlphabetic}]", "");
-//        System.out.println(s);
-        String answer = clean(Additional.getString());
-        givenAnswer = answer;
         return answer;
+//                .replaceAll("\\s+","")
+//                .strip();
     }
 
 
-    public static String wordAnswer;
-    public static String wordAnswerCleaned;
-    public static boolean isCorrectAnswer(Word word) {
+    public static boolean isCorrectAnswer(Word word, String givenAnswer) {
         try {
             // Get answer to word. Return whether it's correct or not
-            System.out.printf("Print the word \"%s\"%s in %s: ",word.original,(word.getTranslateTo().equals(Languages.RUS()) && !word.getClarification().equals("")) ? " (%s)".formatted(word.getClarification()) : "", word.getTranslateTo());
-            var answer = getAnswer();
-            wordAnswer = givenAnswer;
-            if (answer.length()==0) return false;
-            return anyMatches(answer,word.translation);
+            givenAnswer = clean(givenAnswer);
+            if (givenAnswer.length()==0) return false;
+            return anyMatches(givenAnswer,word.translation);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return false;
     }
-    public static String typeAnswer;
-    public static boolean isCorrectType(Word word) {
+    public static boolean isCorrectType(Word word, String givenType) {
         // Get answer to word type. Return whether it's correct or not
-        System.out.printf("Print the type of word \"%s\": ",word.original);
-        var type = getAnswer();
-        typeAnswer = givenAnswer;
+        givenType = clean(givenType);
 
-        if (type.length()==0) return false;
+        if (givenType.length()==0) return false;
 //           System.out.println("Word type: "+word.type+"; is it verb? : "+word.type.contains("verb"));
 //           System.out.println("Word type: "+word.type+"; is it noun? : "+word.type.contains("noun"));
 //           System.out.println("Word type: "+word.type+"; is it misc? : "+word.type.contains("misc"));
 //           System.out.println("Word type: "+word.type+"; is it adjective? : "+word.type.contains("adjective"));
-        return Stream.of(word.type.split(",")).anyMatch(i -> i.strip().equals(type));
+        String finalGivenType = givenType;
+        return Stream.of(word.type.split(",")).anyMatch(i -> i.strip().equals(finalGivenType));
 //        return word.type.contains(type);
     }
 
@@ -66,6 +51,9 @@ public class User {
         return Stream.of(answer.split(",")).anyMatch(i ->
             Arrays.stream(toMatchTO.split(",")).anyMatch(j -> clean(j).matches(clean(i))));
     }
+
+
+
     static List<String> takenUsernames = CSVFileWithRecords.getUsernames();
     public static boolean checkAvailability(String text) {
         return ((!text.equals("")) && (!takenUsernames.contains(text)));

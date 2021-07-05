@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import language.learn.quiz.Main;
 import language.learn.quiz.game.difficulty.Difficulty;
+import language.learn.quiz.game.result.GameResult;
+import language.learn.quiz.game.start.GameStart;
 import language.learn.quiz.game.typeOfGame.ENG_RUS_mixed;
 import language.learn.quiz.game.user.User;
 
@@ -17,8 +19,6 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class GameSetup {
-
-
     static Parent root = null;
     public static void start() {
         try {
@@ -60,7 +60,7 @@ public class GameSetup {
 
     private static Short difficultyChosen;
     private static Short typeOfGameChosen;
-    private static Boolean partOfSpeechChosen;
+    private static Boolean partOfSpeechChosen = false;
     private static String usernameChosen;
     private static final HashMap<Control,String> objectsToChoose = new HashMap<>();
     private void setListeners() {
@@ -116,7 +116,10 @@ public class GameSetup {
 
     public void launchGame(ActionEvent actionEvent) {
         if (!highlight(objectsToChoose)) {
-//            GameStart.throwWords();
+            GameStart.start(Difficulty.getWords().get(difficultyChosen.intValue()).shortValue(),
+                    typeOfGameChosen,
+                    partOfSpeechChosen,
+                    usernameChosen);
         }
     }
     @FXML

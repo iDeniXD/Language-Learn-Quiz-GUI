@@ -2,8 +2,8 @@ language/learn/quiz/game/difficulty/Difficulty.java
  language.learn.quiz.game.difficulty.Difficulty
 language/learn/quiz/game/CSV/CSVFileWithWords/CSVFileWithWords.java
  language.learn.quiz.game.CSV.CSVFileWithWords.CSVFileWithWords
-language/learn/quiz/game/gameSetup/GameSetup.java
- language.learn.quiz.game.gameSetup.GameSetup
+language/learn/quiz/hallOfFame/HallOfFame.java
+ language.learn.quiz.hallOfFame.HallOfFame
 language/learn/quiz/game/word/Word.java
  language.learn.quiz.game.word.Word
 language/learn/quiz/game/typeOfGame/ENG_RUS_mixed.java
@@ -14,6 +14,7 @@ language/learn/quiz/game/languages/Languages.java
  language.learn.quiz.game.languages.Languages
 language/learn/quiz/game/start/GameStart.java
  language.learn.quiz.game.start.GameStart
+ language.learn.quiz.game.start.GameStart$1
 language/learn/quiz/game/partOfSpeech/PartsOfSpeech.java
  language.learn.quiz.game.partOfSpeech.PartsOfSpeech
 language/learn/quiz/game/settings/GameSettings.java
@@ -24,9 +25,11 @@ language/learn/quiz/game/user/User.java
  language.learn.quiz.game.user.User
 language/learn/quiz/game/CSV/CSVFileWithRecords/CSVFileWithRecords.java
  language.learn.quiz.game.CSV.CSVFileWithRecords.CSVFileWithRecords
+language/learn/quiz/game/start/GameProcessController.java
+ language.learn.quiz.game.start.GameProcessController
 language/learn/quiz/game/result/GameResult.java
  language.learn.quiz.game.result.GameResult
-language/learn/quiz/hallOfFame/HallOfFame.java
- language.learn.quiz.hallOfFame.HallOfFame
+language/learn/quiz/game/gameSetup/GameSetup.java
+ language.learn.quiz.game.gameSetup.GameSetup
 language/learn/quiz/Controller.java
  language.learn.quiz.Controller

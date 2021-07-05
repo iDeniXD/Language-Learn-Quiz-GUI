@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CSVFileWithWords {
 
-    static String fileName = Main.class.getClassLoader().getResource("words.csv").getFile();
+    static String fileName = Main.class.getResource("CSVFileWithWords/words.csv").getFile();
     private static List<String[]> lines;
     public static Word getWord(int typeOfGame) {
         // Get all file lines
