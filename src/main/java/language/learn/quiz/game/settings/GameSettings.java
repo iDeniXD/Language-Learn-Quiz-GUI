@@ -7,18 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
 import language.learn.quiz.Main;
-import language.learn.quiz.game.difficulty.Difficulty;
-import language.learn.quiz.game.partOfSpeech.PartsOfSpeech;
 import language.learn.quiz.game.result.GameResult;
-import language.learn.quiz.game.start.GameStart;
-import language.learn.quiz.game.typeOfGame.ENG_RUS_mixed;
-import language.learn.quiz.game.user.User;
-import language.learn.quiz.hallOfFame.HallOfFame;
 
 import java.io.IOException;
 
@@ -79,7 +69,7 @@ public class GameSettings {
             gameSettingsScene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
             loadNeeded(gameSettingsScene);
         }
-        Main.currentStage.setScene(gameSettingsScene);
+        Main.stage.setScene(gameSettingsScene);
     }
 
     @FXML
@@ -90,7 +80,7 @@ public class GameSettings {
 
     //Button EXIT
     public void goToMainMenu(ActionEvent actionEvent) {
-        Main.currentStage.setScene(Main.menuScene);
+        Main.stage.setScene(Main.scene);
     }
 
     //When toggleButton is pressed, it changes its label

@@ -9,49 +9,44 @@ import javafx.geometry.VPos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import language.learn.quiz.Main;
 import language.learn.quiz.game.CSV.CSVFileWithRecords.CSVFileWithRecords;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class HallOfFame {
-    static Scene scene = null;
+    static Parent root;
     public static void show() {
         try {
-            scene = getScene();
-            show(scene);
+            root = getRoot();
+            show(root);
             // Scene shows up, then FXMLLoader calls method initialize(), which continues program
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    private static Scene getScene() throws IOException {
-        if (scene == null){
-            Parent FXMLFile = FXMLLoader.load(HallOfFame.class.getResource("HallOfFame.fxml"));
-            scene = new Scene(FXMLFile);
-            scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
+    private static Parent getRoot() throws IOException {
+        if (root == null){
+            root = FXMLLoader.load(HallOfFame.class.getResource("HallOfFame.fxml"));
         }
-        return scene;
+        return root;
     }
-    private static void show(Scene scene) {
-        Main.currentStage.setScene(scene);
+    private static void show(Parent root) {
+        Main.stage.getScene().setRoot(root);
     }
 
     
     @FXML
     public void initialize(){
-        setup(scene);
+        setup();
     }
 
     @FXML
     GridPane GridPaneWithRecords;
-    private void setup(Scene scene) {
+    private void setup() {
         var records = getRecords();
         addRecordsToGridPane(GridPaneWithRecords,records);
     }
@@ -106,6 +101,6 @@ public class HallOfFame {
     }
 
     public void goToMainMenu(ActionEvent actionEvent) {
-        Main.currentStage.setScene(Main.menuScene);
+        Main.stage.getScene().setRoot(Main.root);
     }
 }

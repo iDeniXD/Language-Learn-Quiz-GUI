@@ -6,7 +6,6 @@ import language.learn.quiz.hallOfFame.HallOfFame;
 
 public class Controller {
     public void GameSettingsStart(ActionEvent actionEvent) {
-//        GameSettings.start();
         GameSetup.start();
     }
 
@@ -15,6 +14,6 @@ public class Controller {
     }
 
     public void MainExit(ActionEvent actionEvent) {
-        Main.currentStage.close();
+        Main.stage.close();
     }
 }

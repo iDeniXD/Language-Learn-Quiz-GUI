@@ -4,16 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import language.learn.quiz.Main;
 import language.learn.quiz.game.difficulty.Difficulty;
-import language.learn.quiz.game.start.GameStart;
 import language.learn.quiz.game.typeOfGame.ENG_RUS_mixed;
 import language.learn.quiz.game.user.User;
 
@@ -23,26 +19,24 @@ import java.util.HashMap;
 public class GameSetup {
 
 
-    static Scene scene = null;
+    static Parent root = null;
     public static void start() {
         try {
-            scene = getScene();
-            show(scene);
+            root = getRoot();
+            show(root);
             // Scene shows up, then FXMLLoader calls method initialize(), which continues program
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    private static Scene getScene() throws IOException {
-        if (scene == null){
-            Parent FXMLFile = FXMLLoader.load(Main.class.getResource("gameSetup/GameSetup.fxml"));
-            scene = new Scene(FXMLFile);
-            scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
+    private static Parent getRoot() throws IOException {
+        if (root == null){
+            root = FXMLLoader.load(Main.class.getResource("gameSetup/GameSetup.fxml"));
         }
-        return scene;
+        return root;
     }
-    private static void show(Scene scene) {
-        Main.currentStage.setScene(scene);
+    private static void show(Parent scene) {
+        Main.stage.getScene().setRoot(root);
     }
 
     @FXML
@@ -55,10 +49,10 @@ public class GameSetup {
     TextField username;
     @FXML
     public void initialize() {
-        setup(scene);
+        setup();
     }
 
-    private void setup(Scene scene) {
+    private void setup() {
         setDifficultiesText();
         setTypeOfGameText();
         setListeners();
@@ -117,7 +111,7 @@ public class GameSetup {
 
     //Button EXIT
     public void goToMainMenu(ActionEvent actionEvent) {
-        Main.currentStage.setScene(Main.menuScene);
+        Main.stage.getScene().setRoot(Main.root);
     }
 
     public void launchGame(ActionEvent actionEvent) {
@@ -144,10 +138,10 @@ public class GameSetup {
             rootAnchorPane.getChildren().add(label);
 
             Label finalLabel = label;
-            Main.currentStage.widthProperty().addListener((observable, oldValue, newValue)->{
+            Main.stage.widthProperty().addListener((observable, oldValue, newValue)->{
                 rootAnchorPane.getChildren().remove(finalLabel);
             });
-            Main.currentStage.heightProperty().addListener((observable, oldValue, newValue)->{
+            Main.stage.heightProperty().addListener((observable, oldValue, newValue)->{
                 rootAnchorPane.getChildren().remove(finalLabel);
             });
             try {
