@@ -37,7 +37,7 @@
          </opaqueInsets>
          <children>
             <Label id="PlainText" text="Choose difficulty:" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-            <VBox id="PlainText" fx:id="testik" alignment="CENTER_LEFT" prefHeight="105.0" prefWidth="41.0" spacing="10.0" GridPane.columnIndex="1">
+            <VBox fx:id="difficultyTogglesVBox" alignment="CENTER_LEFT" prefHeight="105.0" prefWidth="41.0" spacing="10.0" GridPane.columnIndex="1">
                <children>
                   <RadioButton id="PlainText" mnemonicParsing="false" text="1">
                      <toggleGroup>
@@ -52,7 +52,7 @@
                </children>
             </VBox>
             <Label id="PlainText" text="Choose type of the game:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <VBox fx:id="typeOfGameTogglesVBox" alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <RadioButton id="PlainText" mnemonicParsing="false" text="1">
                      <toggleGroup>
@@ -73,14 +73,14 @@
                </children>
             </VBox>
             <Label id="PlainText" text="Your username:" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-            <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <VBox fx:id="usernameTextfieldVBox" alignment="CENTER_LEFT" fillWidth="false" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
                   <TextField fx:id="username" prefHeight="25.0" prefWidth="192.0" />
                </children>
             </VBox>
          </children>
       </GridPane>
-      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#launchGame" text="Play" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="36.0">
+      <Button fx:id="playButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#launchGame" text="Play" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="36.0">
          <font>
             <Font size="38.0" />
          </font>

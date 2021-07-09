@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class CSVFileWithRecords {
 //    static String fileName = Objects.requireNonNull(CSVFileWithRecords.class.getClassLoader().getResource("records.csv")).getFile();
-    static String fileName = CSVFileWithRecords.class.getClassLoader().getResource("language/learn/quiz/CSVFileWithRecords/records.csv").getFile();
+    static String fileName = Main.class.getResource("CSVFileWithRecords/records.csv").getFile();
 //    static String fileName = ClassLoader.getSystemClassLoader().getResource("records.csv").getFile();
     static String[] header = new String[]{"User","Number of Words Given","Type of Game","Using Parts of Speech","Achieved Points","Time of the Record"};
     //User,Number of Words Given,Type of Game,Using Parts of Speech,Achieved Points,Time of the Record

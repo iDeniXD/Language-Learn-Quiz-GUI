@@ -191,8 +191,8 @@ public class GameStart {
     private static void gameEnd(){
         // TODO end game
         // Output result
+        result.record();
 //        result.show();
-//        result.record();
     }
 
 

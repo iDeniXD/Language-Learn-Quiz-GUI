@@ -1,19 +1,31 @@
 package language.learn.quiz.game.gameSetup;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 import language.learn.quiz.Main;
 import language.learn.quiz.game.difficulty.Difficulty;
 import language.learn.quiz.game.start.GameStart;
 import language.learn.quiz.game.typeOfGame.ENG_RUS_mixed;
 import language.learn.quiz.game.user.User;
 
+import javafx.scene.input.MouseEvent;
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -126,6 +138,8 @@ public class GameSetup {
     }
     @FXML
     AnchorPane rootAnchorPane;
+    @FXML
+    Button playButton;
     private boolean highlight(HashMap<VBox,String> objectsToChoose) {
         boolean result = false;
         Label label;
@@ -143,18 +157,25 @@ public class GameSetup {
             rootAnchorPane.getChildren().add(label);
 
             Label finalLabel = label;
+            var e = new EventHandler<Event>(){
+
+                @Override
+                public void handle(Event event) {
+                    rootAnchorPane.getChildren().remove(finalLabel);
+                }
+            };
             Main.stage.widthProperty().addListener((observable, oldValue, newValue)->{
-                rootAnchorPane.getChildren().remove(finalLabel);
+                e.handle(new ActionEvent());
             });
             Main.stage.heightProperty().addListener((observable, oldValue, newValue)->{
-                rootAnchorPane.getChildren().remove(finalLabel);
+                e.handle(new ActionEvent());
             });
 
             o.getChildren().forEach(i -> {
-                i.setOnMouseClicked((e) -> {
-                    rootAnchorPane.getChildren().remove(finalLabel);
-                });
+                i.addEventHandler(MouseEvent.MOUSE_CLICKED, e);
             });
+
+            playButton.addEventHandler(ActionEvent.ACTION, e);
         }
         return result;
     }
