@@ -146,14 +146,14 @@ public class GameStart {
                     System.out.println("bug");
                     setPoints();
                 } else {
-                    System.out.printf("Correct part: %s%nYour answer: %s",word.type,partOfSpeechField.getText());
+                    System.out.printf("Correct part: %s%nYour answer: %s%n",word.type,partOfSpeechField.getText());
                 }
             } else {
                 setPoints();
             }
 
         } else {
-            System.out.printf("Correct answer: %s%nYour answer: %s",word.translation,translationField.getText());
+            System.out.printf("Correct answer: %s%nYour answer: %s%n",word.translation,translationField.getText());
         }
     }
 
@@ -189,6 +189,7 @@ public class GameStart {
 
 
     private static void gameEnd(){
+        // TODO end game
         // Output result
 //        result.show();
 //        result.record();

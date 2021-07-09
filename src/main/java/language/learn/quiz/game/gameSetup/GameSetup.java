@@ -5,12 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import language.learn.quiz.Main;
 import language.learn.quiz.game.difficulty.Difficulty;
-import language.learn.quiz.game.result.GameResult;
 import language.learn.quiz.game.start.GameStart;
 import language.learn.quiz.game.typeOfGame.ENG_RUS_mixed;
 import language.learn.quiz.game.user.User;
@@ -62,20 +61,23 @@ public class GameSetup {
     private static Short typeOfGameChosen;
     private static Boolean partOfSpeechChosen = false;
     private static String usernameChosen;
-    private static final HashMap<Control,String> objectsToChoose = new HashMap<>();
+
+    private static final HashMap<VBox,String> objectsToHighlight = new HashMap<>();
+    @FXML
+    VBox difficultyTogglesVBox, typeOfGameTogglesVBox, usernameTextfieldVBox;
     private void setListeners() {
 
-        objectsToChoose.put((Control)difficulty.getToggles().get(0),"Choose one");
-        objectsToChoose.put((Control)typeOfGame.getToggles().get(0),"Choose one");
-        objectsToChoose.put(username,"Empty field!");
+        objectsToHighlight.put(difficultyTogglesVBox,"Choose one");
+        objectsToHighlight.put(typeOfGameTogglesVBox,"Choose one");
+        objectsToHighlight.put(usernameTextfieldVBox,"Empty field!");
 
         difficulty.selectedToggleProperty().addListener((obserableValue, old_toggle, new_toggle) -> {
             difficultyChosen = Difficulty.getDifficultyIndex(((RadioButton) difficulty.getSelectedToggle()).getText());
-            objectsToChoose.remove(difficulty.getToggles().get(0));
+            objectsToHighlight.remove(difficultyTogglesVBox);
         });
         typeOfGame.selectedToggleProperty().addListener((obserableValue, old_toggle, new_toggle) -> {
             typeOfGameChosen = ENG_RUS_mixed.getTypeIndex(((RadioButton)typeOfGame.getSelectedToggle()).getText());
-            objectsToChoose.remove(typeOfGame.getToggles().get(0));
+            objectsToHighlight.remove(typeOfGameTogglesVBox);
         });
         partOfSpeech.selectedProperty().addListener((observable, oldValue, newValue) -> {
             partOfSpeechChosen = partOfSpeech.isSelected();
@@ -83,10 +85,10 @@ public class GameSetup {
         username.textProperty().addListener((observable, oldValue, newValue)->{
             if (User.checkAvailability(username.getText())) {
                 usernameChosen = username.getText();
-                objectsToChoose.remove(username);
+                objectsToHighlight.remove(usernameTextfieldVBox);
             }else {
                 usernameChosen = null;
-                objectsToChoose.put(username,(username.getText().equals("") ? "Empty field!" : "This username is already taken!"));
+                objectsToHighlight.put(usernameTextfieldVBox,(username.getText().equals("") ? "Empty field!" : "This username is already taken!"));
             }
         });
     }
@@ -115,7 +117,7 @@ public class GameSetup {
     }
 
     public void launchGame(ActionEvent actionEvent) {
-        if (!highlight(objectsToChoose)) {
+        if (!highlight(objectsToHighlight)) {
             GameStart.start(Difficulty.getWords().get(difficultyChosen.intValue()).shortValue(),
                     typeOfGameChosen,
                     partOfSpeechChosen,
@@ -124,15 +126,15 @@ public class GameSetup {
     }
     @FXML
     AnchorPane rootAnchorPane;
-    private boolean highlight(HashMap<Control,String> objectsToChoose) {
+    private boolean highlight(HashMap<VBox,String> objectsToChoose) {
         boolean result = false;
         Label label;
         Bounds boundsInScene;
-        for (Control o : objectsToChoose.keySet()) {
+        for (VBox o : objectsToChoose.keySet()) {
             result = true;
             label = new Label(objectsToChoose.get(o));
 
-            boundsInScene = o.localToScene(o.getBoundsInLocal());
+            boundsInScene = o.getChildren().get(0).localToScene(o.getChildren().get(0).getBoundsInLocal());
             label.setLayoutX(boundsInScene.getMinX());
             label.setLayoutY(boundsInScene.getMinY());
 
@@ -147,15 +149,12 @@ public class GameSetup {
             Main.stage.heightProperty().addListener((observable, oldValue, newValue)->{
                 rootAnchorPane.getChildren().remove(finalLabel);
             });
-            try {
-                ((RadioButton)o).getToggleGroup().selectedToggleProperty().addListener((observable, oldValue, newValue)->{
+
+            o.getChildren().forEach(i -> {
+                i.setOnMouseClicked((e) -> {
                     rootAnchorPane.getChildren().remove(finalLabel);
                 });
-            } catch (Exception e){
-                ((TextField)o).textProperty().addListener((observable, oldValue, newValue)->{
-                    rootAnchorPane.getChildren().remove(finalLabel);
-                });
-            }
+            });
         }
         return result;
     }
