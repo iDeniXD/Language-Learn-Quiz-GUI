@@ -25,6 +25,7 @@ public class User {
     public static boolean isCorrectAnswer(Word word, String givenAnswer) {
         try {
             // Get answer to word. Return whether it's correct or not
+            // TODO problem with russian
             givenAnswer = clean(givenAnswer);
             if (givenAnswer.length()==0) return false;
             return anyMatches(givenAnswer,word.translation);

@@ -22,7 +22,7 @@ public class CSVFileWithWords {
         Word rndword;
         do {
             rndword = getRandomWord(lines);
-        } while( false
+        } while( false // TODO clean word receiving test
 //                || !rndword.translation.contains("now and then")
 //                || !rndword.translation.contains("to come, arrive")
 //                || !rndword.translation.contains("#")
@@ -56,6 +56,7 @@ public class CSVFileWithWords {
         word.setTranslateTo(typeOfGame-1);
         word.clean();
 
+        // TODO problem with russian
         return word;
     }
 
