@@ -134,6 +134,8 @@ public class GameSetup {
                     typeOfGameChosen,
                     partOfSpeechChosen,
                     usernameChosen);
+            // Reload game setup
+            root = null;
         }
     }
     @FXML

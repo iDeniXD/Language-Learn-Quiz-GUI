@@ -38,7 +38,11 @@ public class HallOfFame {
         Main.stage.getScene().setRoot(root);
     }
 
-    
+    public static void reload() {
+        root = null;
+    }
+
+
     @FXML
     public void initialize(){
         setup();

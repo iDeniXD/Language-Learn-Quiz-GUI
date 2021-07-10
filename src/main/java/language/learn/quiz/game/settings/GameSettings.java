@@ -80,7 +80,7 @@ public class GameSettings {
 
     //Button EXIT
     public void goToMainMenu(ActionEvent actionEvent) {
-        Main.stage.setScene(Main.scene);
+        Main.stage.getScene().setRoot(Main.root);
     }
 
     //When toggleButton is pressed, it changes its label

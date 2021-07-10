@@ -1,7 +1,6 @@
 package language.learn.quiz.game.start;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,7 +32,7 @@ public class GameStart {
     @FXML
     AnchorPane rootAnchorPane;
     @FXML
-    Button nextWord;
+    Button nextWord, backToLobby;
     @FXML
     Label givenWord;
     @FXML
@@ -76,22 +75,20 @@ public class GameStart {
     }
 
     public void StartGame(ActionEvent actionEvent) {
-        changeLabel();
         enableFields(contentGridPane);
-        if (!needed()) {
+        if (!result.usingPartsOfSpeech) {
             removePartsOfSpeechField();
         }
-        changeAction();
+        changeButtons();
         nextWord();
     }
 
-    private void changeAction() {
-        nextWord.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                nextWord();
-            }
-        });
+    private void changeButtons() {
+        nextWord.setText("Next word");
+        nextWord.setOnAction(event -> nextWord());
+
+        backToLobby.setText("End game");
+        backToLobby.setOnAction(event -> gameEnd());
     }
 
     private void enableFields(GridPane gp) {
@@ -103,9 +100,6 @@ public class GameStart {
         });
     }
 
-    private boolean needed() {
-        return result.usingPartsOfSpeech;
-    }
 
     private void removePartsOfSpeechField() {
         contentGridPane.getChildren().remove(partOfSpeechLabel);
@@ -114,13 +108,9 @@ public class GameStart {
 
     }
 
-    private void changeLabel() {
-        nextWord.setText("Next word");
-    }
-
     Word word;
     private void nextWord() {
-        if (gameEnded()) {
+        if (isGameEnd()) {
             gameEnd();
         } else {
             checkIfCorrect();
@@ -129,7 +119,7 @@ public class GameStart {
 
     }
 
-    private boolean gameEnded() {
+    private boolean isGameEnd() {
         return (Integer.parseInt(wordInTheCount.getText().split("/")[0].strip()) ==
                 Integer.parseInt(wordInTheCount.getText().split("/")[1].strip()))
                 &&
@@ -190,8 +180,10 @@ public class GameStart {
 
     private static void gameEnd(){
         // TODO end game
-        // Output result
+
+        // Saves new record + reloads hall of fame
         result.record();
+        result.show();
 //        result.show();
     }
 

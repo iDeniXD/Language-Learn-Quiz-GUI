@@ -1,36 +1,35 @@
-language/learn/quiz/game/difficulty/Difficulty.java
- language.learn.quiz.game.difficulty.Difficulty
-language/learn/quiz/game/start/GameProcessController.java
- language.learn.quiz.game.start.GameProcessController
-language/learn/quiz/game/CSV/CSVFileWithRecords/CSVFileWithRecords.java
- language.learn.quiz.game.CSV.CSVFileWithRecords.CSVFileWithRecords
-language/learn/quiz/game/word/Word.java
- language.learn.quiz.game.word.Word
-language/learn/quiz/game/typeOfGame/ENG_RUS_mixed.java
- language.learn.quiz.game.typeOfGame.ENG_RUS_mixed
-language/learn/quiz/game/Additional.java
- language.learn.quiz.game.Additional
-language/learn/quiz/game/languages/Languages.java
- language.learn.quiz.game.languages.Languages
-language/learn/quiz/game/result/GameResult.java
- language.learn.quiz.game.result.GameResult
-language/learn/quiz/game/partOfSpeech/PartsOfSpeech.java
- language.learn.quiz.game.partOfSpeech.PartsOfSpeech
-language/learn/quiz/game/settings/GameSettings.java
- language.learn.quiz.game.settings.GameSettings
-language/learn/quiz/Main.java
- language.learn.quiz.Main
-language/learn/quiz/game/CSV/CSVFileWithWords/CSVFileWithWords.java
- language.learn.quiz.game.CSV.CSVFileWithWords.CSVFileWithWords
-language/learn/quiz/game/start/GameStart.java
- language.learn.quiz.game.start.GameStart
- language.learn.quiz.game.start.GameStart$1
 language/learn/quiz/hallOfFame/HallOfFame.java
  language.learn.quiz.hallOfFame.HallOfFame
-language/learn/quiz/game/user/User.java
- language.learn.quiz.game.user.User
-language/learn/quiz/game/gameSetup/GameSetup.java
- language.learn.quiz.game.gameSetup.GameSetup
- language.learn.quiz.game.gameSetup.GameSetup$1
-language/learn/quiz/Controller.java
- language.learn.quiz.Controller
+language/learn/quiz/settings/GameSettings.java
+ language.learn.quiz.settings.GameSettings
+language/learn/quiz/partOfSpeech/PartsOfSpeech.java
+ language.learn.quiz.partOfSpeech.PartsOfSpeech
+language/learn/quiz/gameSetup/GameSetup.java
+ language.learn.quiz.gameSetup.GameSetup
+ language.learn.quiz.gameSetup.GameSetup$1
+language/learn/quiz/CSV/CSVFileWithRecords/CSVFileWithRecords.java
+ language.learn.quiz.CSV.CSVFileWithRecords.CSVFileWithRecords
+language/learn/quiz/word/Word.java
+ language.learn.quiz.word.Word
+language/learn/quiz/typeOfGame/ENG_RUS_mixed.java
+ language.learn.quiz.typeOfGame.ENG_RUS_mixed
+language/learn/quiz/start/GameStart.java
+ language.learn.quiz.start.GameStart
+language/learn/quiz/CSV/CSVFileWithWords/CSVFileWithWords.java
+ language.learn.quiz.CSV.CSVFileWithWords.CSVFileWithWords
+language/learn/quiz/languages/Languages.java
+ language.learn.quiz.languages.Languages
+language/learn/quiz/user/User.java
+ language.learn.quiz.user.User
+language/learn/quiz/Main.java
+ language.learn.quiz.Main
+language/learn/quiz/lobby/LobbyController.java
+ language.learn.quiz.lobby.LobbyController
+language/learn/quiz/start/GameProcessController.java
+ language.learn.quiz.start.GameProcessController
+language/learn/quiz/result/GameResult.java
+ language.learn.quiz.result.GameResult
+language/learn/quiz/Additional.java
+ language.learn.quiz.Additional
+language/learn/quiz/difficulty/Difficulty.java
+ language.learn.quiz.difficulty.Difficulty

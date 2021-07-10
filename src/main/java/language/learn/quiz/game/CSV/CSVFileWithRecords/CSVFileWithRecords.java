@@ -4,11 +4,9 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import language.learn.quiz.Main;
 import language.learn.quiz.game.typeOfGame.ENG_RUS_mixed;
+import language.learn.quiz.hallOfFame.HallOfFame;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,15 +21,20 @@ public class CSVFileWithRecords {
     //User,Number of Words Given,Type of Game,Using Parts of Speech,Achieved Points,Time of the Record
     public static void makeRecord(String[] record) {
         try {
-            FileWriter fileWriter = new FileWriter(fileName, true);
-            CSVWriter csvwriter = new CSVWriter(fileWriter);
-            if (!exists(fileName)){
-//                fileWriter.write(String.valueOf(header));
-                csvwriter.writeNext(header);
-            }
-//            fileWriter.write(String.valueOf(record));
-            csvwriter.writeNext(record);
-            System.out.println(Arrays.toString(record));
+            CSVWriter writer = new CSVWriter(new FileWriter(fileName, true));
+            // TODO solve problem with records not saving
+            writer.writeNext(record);
+
+            HallOfFame.reload();
+
+            writer.close();
+//            if (!exists(fileName)){
+////                fileWriter.write(String.valueOf(header));
+//                writer.writeNext(header);
+//            }
+////            fileWriter.write(String.valueOf(record));
+//            writer.writeNext(record);
+//            System.out.println(Arrays.toString(record));
         } catch (IOException e){
             throw new RuntimeException("Could not find file", e);
         }
@@ -42,30 +45,6 @@ public class CSVFileWithRecords {
         File file = new File(fileName);
         return file.exists();
     }
-    private static List<String[]> readAllLines(FileReader reader) throws IOException {
-        // Read all lines from file
-        CSVReader csvreader = new CSVReader(reader);
-        List<String[]> list = csvreader.readAll();
-        reader.close();
-        csvreader.close();
-
-        filter(list);
-
-        return list;
-    }
-
-    private static List<String[]> filter(List<String[]> list) {
-        for (int i = 0; i < list.get(0).length; i++) {
-            // Replacing all trues and falses in Using Parts of Speech to Yes and No
-            if (list.get(0)[i].contains("Using Parts of Speech")){
-                for (int j = 1; j < list.size(); j++) {
-                    list.get(j)[i] = (list.get(j)[i].contains("true") ? "Yes" : "No");
-                }
-            }
-        }
-
-        return list;
-    }
 
     public static List<String[]> getRecords() {
         try {
@@ -74,6 +53,31 @@ public class CSVFileWithRecords {
         } catch (IOException e){
             throw new RuntimeException("Could not find file", e);
         }
+    }
+    private static List<String[]> readAllLines(FileReader reader) throws IOException {
+        // Read all lines from file
+        CSVReader csvreader = new CSVReader(reader);
+        List<String[]> list = csvreader.readAll();
+        reader.close();
+        csvreader.close();
+
+//        filter(list);
+
+        return list;
+    }
+
+    private static List<String[]> filter(List<String[]> list) {
+        for (int i = 0; i < list.get(0).length; i++) {
+            // Replacing all trues and falses in Using Parts of Speech to Yes and No
+            //TODO try to make this method by using csvreader
+            if (list.get(0)[i].contains("Using Parts of Speech")){
+                for (int j = 1; j < list.size(); j++) {
+                    list.get(j)[i] = (list.get(j)[i].contains("true") ? "Yes" : "No");
+                }
+            }
+        }
+
+        return list;
     }
 
     public static List<String> getUsernames() {

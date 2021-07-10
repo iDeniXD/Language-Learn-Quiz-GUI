@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="rootAnchorPane" prefHeight="600.0" prefWidth="600.0" styleClass="MainPanel" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.game.start.GameStart">
    <children>
-      <Button mnemonicParsing="false" onAction="#goToMainMenu" text="Back to Lobby" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="36.0">
+      <Button fx:id="backToLobby" mnemonicParsing="false" onAction="#goToMainMenu" text="Back to Lobby" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="36.0">
          <font>
             <Font size="38.0" />
          </font>

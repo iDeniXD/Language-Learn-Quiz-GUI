@@ -63,6 +63,8 @@
     -fx-font-size: 40;
 }
 
+/*TODO set Label properties the same as #PlainText and remove #PlainText id in every label in each scene*/
+
 Button{
     -fx-border-color: transparent;
     -fx-border-width: 0;

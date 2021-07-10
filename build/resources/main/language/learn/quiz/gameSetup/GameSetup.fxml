@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootAnchorPane" prefHeight="600.0" prefWidth="600.0" styleClass="MainPanel" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.game.gameSetup.GameSetup">
+<AnchorPane fx:id="rootAnchorPane" prefHeight="600.0" prefWidth="600.0" styleClass="MainPanel" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.gameSetup.GameSetup">
     <children>
         <Button mnemonicParsing="false" onAction="#goToMainMenu" text="Back" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="36.0">
             <font>
