@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootAnchorPane" prefHeight="600.0" prefWidth="600.0" styleClass="MainPanel" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.game.gameSetup.GameSetup">
+<AnchorPane fx:id="rootAnchorPane" prefHeight="600.0" prefWidth="600.0" styleClass="MainPanel" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.gameSetup.GameSetupController">
     <children>
-        <Button mnemonicParsing="false" onAction="#goToMainMenu" text="Back" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="36.0">
+        <Button mnemonicParsing="false" onAction="#goToLobby" text="Back" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="36.0">
             <font>
                 <Font size="38.0" />
             </font>
@@ -39,28 +39,28 @@
             <Label id="PlainText" text="Choose difficulty:" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
             <VBox fx:id="difficultyTogglesVBox" alignment="CENTER_LEFT" prefHeight="105.0" prefWidth="41.0" spacing="10.0" GridPane.columnIndex="1">
                <children>
-                  <RadioButton id="PlainText" mnemonicParsing="false" text="1">
+                  <RadioButton id="1" mnemonicParsing="false" text="1">
                      <toggleGroup>
-                        <ToggleGroup fx:id="difficulty" />
+                        <ToggleGroup fx:id="difficultyToggles" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton id="PlainText" mnemonicParsing="false" text="2" toggleGroup="$difficulty">
+                  <RadioButton id="2" mnemonicParsing="false" text="2" toggleGroup="$difficultyToggles">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin></RadioButton>
-                  <RadioButton id="PlainText" mnemonicParsing="false" text="3" toggleGroup="$difficulty" />
+                  <RadioButton id="3" mnemonicParsing="false" text="3" toggleGroup="$difficultyToggles" />
                </children>
             </VBox>
             <Label id="PlainText" text="Choose type of the game:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <VBox fx:id="typeOfGameTogglesVBox" alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <RadioButton id="PlainText" mnemonicParsing="false" text="1">
+                  <RadioButton id="1" mnemonicParsing="false" text="1">
                      <toggleGroup>
-                        <ToggleGroup fx:id="typeOfGame" />
+                        <ToggleGroup fx:id="typeOfGameToggles" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton id="PlainText" mnemonicParsing="false" text="2" toggleGroup="$typeOfGame" />
-                  <RadioButton id="PlainText" mnemonicParsing="false" text="3" toggleGroup="$typeOfGame" />
+                  <RadioButton id="2" mnemonicParsing="false" text="2" toggleGroup="$typeOfGameToggles" />
+                  <RadioButton id="3" mnemonicParsing="false" text="3" toggleGroup="$typeOfGameToggles" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -69,7 +69,7 @@
             <Label id="PlainText" prefHeight="101.0" prefWidth="271.0" text="Do you want to name the part of speech of the given word?" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <ToggleButton fx:id="partOfSpeech" mnemonicParsing="false" onAction="#changeText" text="No" />
+                  <ToggleButton fx:id="partOfSpeechToggle" mnemonicParsing="false" onAction="#changeText" text="No" />
                </children>
             </VBox>
             <Label id="PlainText" text="Your username:" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />

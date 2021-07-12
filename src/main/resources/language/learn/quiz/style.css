@@ -83,6 +83,11 @@ Button:hover {
 
 RadioButton {
     -fx-focus-traversable: false;
+
+    -fx-font-family: Arial;
+    -fx-text-fill: -fx-first;
+    -fx-font-size: 20;
+    -fx-wrap-text: true;
 }
 RadioButton:hover{
     -fx-cursor: hand;

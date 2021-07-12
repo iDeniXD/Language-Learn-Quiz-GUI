@@ -6,15 +6,16 @@ language/learn/quiz/partOfSpeech/PartsOfSpeech.java
  language.learn.quiz.partOfSpeech.PartsOfSpeech
 language/learn/quiz/gameSetup/GameSetup.java
  language.learn.quiz.gameSetup.GameSetup
- language.learn.quiz.gameSetup.GameSetup$1
 language/learn/quiz/CSV/CSVFileWithRecords/CSVFileWithRecords.java
  language.learn.quiz.CSV.CSVFileWithRecords.CSVFileWithRecords
 language/learn/quiz/word/Word.java
  language.learn.quiz.word.Word
+language/learn/quiz/result/GameState.java
+ language.learn.quiz.result.GameState
 language/learn/quiz/typeOfGame/ENG_RUS_mixed.java
  language.learn.quiz.typeOfGame.ENG_RUS_mixed
-language/learn/quiz/start/GameStart.java
- language.learn.quiz.start.GameStart
+language/learn/quiz/difficulty/Difficulty.java
+ language.learn.quiz.difficulty.Difficulty
 language/learn/quiz/CSV/CSVFileWithWords/CSVFileWithWords.java
  language.learn.quiz.CSV.CSVFileWithWords.CSVFileWithWords
 language/learn/quiz/languages/Languages.java
@@ -23,13 +24,20 @@ language/learn/quiz/user/User.java
  language.learn.quiz.user.User
 language/learn/quiz/Main.java
  language.learn.quiz.Main
-language/learn/quiz/lobby/LobbyController.java
- language.learn.quiz.lobby.LobbyController
-language/learn/quiz/start/GameProcessController.java
- language.learn.quiz.start.GameProcessController
-language/learn/quiz/result/GameResult.java
- language.learn.quiz.result.GameResult
+language/learn/quiz/lobby/Lobby.java
+ language.learn.quiz.lobby.Lobby
 language/learn/quiz/Additional.java
  language.learn.quiz.Additional
-language/learn/quiz/difficulty/Difficulty.java
- language.learn.quiz.difficulty.Difficulty
+language/learn/quiz/lobby/LobbyController.java
+ language.learn.quiz.lobby.LobbyController
+language/learn/quiz/gameSetup/nodes/AlertLabel.java
+ language.learn.quiz.gameSetup.nodes.AlertLabel
+language/learn/quiz/gameSetup/GameSetupController.java
+ language.learn.quiz.gameSetup.GameSetupController
+ language.learn.quiz.gameSetup.GameSetupController$1
+language/learn/quiz/process/GameProcess.java
+ language.learn.quiz.process.GameProcess
+language/learn/quiz/process/GameProcessController.java
+ language.learn.quiz.process.GameProcessController
+language/learn/quiz/game/Game.java
+ language.learn.quiz.game.Game

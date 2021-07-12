@@ -7,11 +7,11 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import language.learn.quiz.Main;
-import language.learn.quiz.game.CSV.CSVFileWithRecords.CSVFileWithRecords;
+import language.learn.quiz.CSV.CSVFileWithRecords.CSVFileWithRecords;
+import language.learn.quiz.lobby.Lobby;
 
 import java.io.IOException;
 import java.util.List;
@@ -35,7 +35,7 @@ public class HallOfFame {
         return root;
     }
     private static void show(Parent root) {
-        Main.stage.getScene().setRoot(root);
+        Main.setRoot(root);
     }
 
     public static void reload() {
@@ -104,7 +104,7 @@ public class HallOfFame {
         return list;
     }
 
-    public void goToMainMenu(ActionEvent actionEvent) {
-        Main.stage.getScene().setRoot(Main.root);
+    public void goToLobby(ActionEvent actionEvent) {
+        Lobby.loadScene();
     }
 }
