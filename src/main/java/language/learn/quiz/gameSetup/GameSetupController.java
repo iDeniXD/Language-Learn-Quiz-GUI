@@ -26,6 +26,12 @@ public class GameSetupController {
     ToggleButton partOfSpeechToggle;
     @FXML
     TextField username;
+    @FXML
+    AnchorPane rootAnchorPane;
+    @FXML
+    Button playButton;
+    @FXML
+    VBox difficultyTogglesVBox, typeOfGameTogglesVBox, usernameTextfieldVBox;
 
 
     @FXML
@@ -76,8 +82,6 @@ public class GameSetupController {
     static public String usernameChosen;
 
     private static final HashMap<VBox,String> objectsToHighlight = new HashMap<>();
-    @FXML
-    VBox difficultyTogglesVBox, typeOfGameTogglesVBox, usernameTextfieldVBox;
     private void setupListeners() {
         // Set listeners for selection nodes
 
@@ -175,11 +179,6 @@ public class GameSetupController {
             GameSetup.launchGame();
         }
     }
-
-    @FXML
-    AnchorPane rootAnchorPane;
-    @FXML
-    Button playButton;
     private boolean highlight(HashMap<VBox,String> objectsToChoose) {
         boolean result = false;
         // Notification like "choose one of the options"

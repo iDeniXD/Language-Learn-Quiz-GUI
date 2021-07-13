@@ -54,8 +54,11 @@ public class User {
 
 
 
-    static List<String> takenUsernames = CSVFileWithRecords.getUsernames();
+    public static List<String> takenUsernames = CSVFileWithRecords.getUsernames();
     public static boolean checkAvailability(String text) {
+        if (takenUsernames == null) {
+            takenUsernames = CSVFileWithRecords.getUsernames();
+        }
         return ((!text.equals("")) && (!takenUsernames.contains(text)));
     }
 }

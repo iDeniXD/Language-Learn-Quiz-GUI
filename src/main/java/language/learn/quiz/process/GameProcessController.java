@@ -15,6 +15,7 @@ import language.learn.quiz.word.Word;
 import java.util.Objects;
 
 public class GameProcessController {
+    // Nodes that will be used in the class methods
     @FXML
     AnchorPane rootAnchorPane;
     @FXML
@@ -83,7 +84,9 @@ public class GameProcessController {
 
         //Button backToLobby
         backToLobby.setText("End game");
-        backToLobby.setOnAction(event -> gameEnd());
+        backToLobby.setOnAction(event -> {
+            Lobby.loadScene();
+        });
     }
 
     private void nextWord() {
@@ -147,15 +150,12 @@ public class GameProcessController {
 
 
     private boolean isGameEnd() {
+        // Game ends when words counter reaches chosen difficulty
         return (Integer.parseInt(wordInTheCount.getText().split("/")[0].strip()) ==
                 GameProcess.state.numberOfWords);
     }
 
     private void gameEnd() {
-        // TODO end game
-
-        // Saves new record + reloads hall of fame
-        GameProcess.state.record();
-        GameProcess.state.show();
+        GameProcess.gameEnd();
     }
 }

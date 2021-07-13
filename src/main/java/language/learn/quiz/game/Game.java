@@ -1,7 +1,9 @@
 package language.learn.quiz.game;
 
+import language.learn.quiz.gameEnd.GameEnd;
 import language.learn.quiz.gameSetup.GameSetup;
 import language.learn.quiz.process.GameProcess;
+import language.learn.quiz.state.GameState;
 
 public class Game {
     public static void start() {
@@ -17,5 +19,12 @@ public class Game {
                 typeOfGameChosen,
                 partOfSpeechChosen,
                 usernameChosen);
+    }
+
+    public static void end(GameState state) {
+        // Saves new record + reloads hall of fame
+        state.record();
+        // Show game result
+        GameEnd.loadScene(state);
     }
 }

@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import language.learn.quiz.Main;
 import language.learn.quiz.lobby.Lobby;
-import language.learn.quiz.result.GameState;
+import language.learn.quiz.state.GameState;
 
 import java.io.IOException;
 

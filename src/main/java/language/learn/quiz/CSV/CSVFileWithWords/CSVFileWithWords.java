@@ -7,6 +7,7 @@ import language.learn.quiz.word.Word;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class CSVFileWithWords {
@@ -75,7 +76,8 @@ public class CSVFileWithWords {
     private static List<String[]> readAllLines() {
         // Open file. If success - read lines from it
         try {
-            FileReader fileReader = new FileReader(fileName);
+//            CSVWriter writer = new CSVWriter(new OutputStreamWriter(new FileOutputStream(fileName), StandardCharsets.UTF_8));
+            FileReader fileReader = new FileReader(fileName, StandardCharsets.UTF_8);
             return readAllLines(fileReader);
         } catch (IOException e){
             throw new RuntimeException("Could not find file", e);

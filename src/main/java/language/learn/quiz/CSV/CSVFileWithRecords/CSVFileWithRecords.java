@@ -11,26 +11,18 @@ import java.util.List;
 
 public class CSVFileWithRecords {
 //    static String fileName = Objects.requireNonNull(CSVFileWithRecords.class.getClassLoader().getResource("records.csv")).getFile();
-    static String fileName = Main.class.getResource("CSVFileWithRecords/records.csv").getFile();
+    static String fileName = "src/main/resources/language/learn/quiz/CSVFileWithRecords/records.csv";
 //    static String fileName = ClassLoader.getSystemClassLoader().getResource("records.csv").getFile();
     static String[] header = new String[]{"User","Number of Words Given","Type of Game","Using Parts of Speech","Achieved Points","Time of the Record"};
     //User,Number of Words Given,Type of Game,Using Parts of Speech,Achieved Points,Time of the Record
     public static void makeRecord(String[] record) {
         try {
             CSVWriter writer = new CSVWriter(new FileWriter(fileName, true));
-            // TODO solve problem with records not saving
             writer.writeNext(record);
 
             HallOfFame.reload();
 
             writer.close();
-//            if (!exists(fileName)){
-////                fileWriter.write(String.valueOf(header));
-//                writer.writeNext(header);
-//            }
-////            fileWriter.write(String.valueOf(record));
-//            writer.writeNext(record);
-//            System.out.println(Arrays.toString(record));
         } catch (IOException e){
             throw new RuntimeException("Could not find file", e);
         }
@@ -57,7 +49,7 @@ public class CSVFileWithRecords {
         reader.close();
         csvreader.close();
 
-//        filter(list);
+        filter(list);
 
         return list;
     }

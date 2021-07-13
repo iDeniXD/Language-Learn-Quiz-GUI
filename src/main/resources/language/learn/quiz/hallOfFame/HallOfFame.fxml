@@ -14,7 +14,7 @@
                 <Font size="38.0" />
             </font>
         </Button>
-      <ScrollPane id="ScrollPaneWithRecords" fitToWidth="true" hbarPolicy="NEVER" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="36.0">
+      <ScrollPane id="ScrollPaneWithRecords" fitToWidth="true" hbarPolicy="NEVER" style="-fx-focus-traversable: false;" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="36.0">
          <content>
             <GridPane fx:id="GridPaneWithRecords" gridLinesVisible="true">
               <rowConstraints>

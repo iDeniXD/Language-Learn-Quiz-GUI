@@ -1,23 +1,12 @@
 package language.learn.quiz.process;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import language.learn.quiz.Main;
-import language.learn.quiz.CSV.CSVFileWithWords.CSVFileWithWords;
-import language.learn.quiz.lobby.Lobby;
-import language.learn.quiz.result.GameState;
-import language.learn.quiz.user.User;
-import language.learn.quiz.word.Word;
+import language.learn.quiz.game.Game;
+import language.learn.quiz.state.GameState;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class GameProcess {
     public static GameState state;
@@ -50,68 +39,8 @@ public class GameProcess {
     public static void show(Parent root) {
         Main.setRoot(root);
     }
-    public static void resetScene(){
-        root = null;
+
+    public static void gameEnd() {
+        Game.end(state);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    public static int throwWords(int numberOfWords, int typeOfGame, boolean usingPartsOfSpeech) {
-//        GameProcessController.start();
-//        // word - random word from CSV file
-//        Word word;
-//        //result - points, etc.
-//        int points = 0;
-//
-//        // translation - if has been translated correctly
-//        boolean translation;
-//        // type - if type has been named correctly
-//        boolean type;
-//
-//        for (int i = 0; i < numberOfWords; i++) {
-//            // Get random word from CSV file
-//            word = CSVFileWithWords.getWord(typeOfGame);
-//            // Ask user the translation and type(if needed). True if correct
-//            translation = User.isCorrectAnswer(word);
-//            // If correct point++
-//            if (translation) {
-//                if (usingPartsOfSpeech) {
-//                    type = User.isCorrectType(word);
-//                } else {
-//                    type = true;
-//                }
-//                if (type) {
-//                    System.out.println("Correct! You achieved a point! \n");
-//                    points++;
-//                } else {
-//                    System.out.printf("Wrong part of speech! It was a %s. Your answer: %s. Your cleaned answer: %s%n%n",word.type,User.typeAnswer,User.wordAnswerCleaned);
-//                }
-//            } else {
-//                System.out.printf("Wrong word! The word was %s. It is %s. Your answer: %s. Your cleaned answer: %s%n%n",word.translation,word.type,User.wordAnswer,User.wordAnswerCleaned);
-//            }
-//        }
-//        return points;
-//    }
-//
-//    private static String getLagnguageToTranslateFrom(int typeOfGame) {
-//        return ENG_RUS_mixed.languageFrom(typeOfGame);
-//    }
-//
-//    private static String getLagnguageToTranslateTo(String langFrom) {
-//        if (langFrom.equals(Languages.RUS())) return Languages.ENG();
-//        else return Languages.RUS();
-//    }
-
 }

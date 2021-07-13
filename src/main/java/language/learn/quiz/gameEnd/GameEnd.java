@@ -1,32 +1,31 @@
-package language.learn.quiz.lobby;
+package language.learn.quiz.gameEnd;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import language.learn.quiz.Main;
+import language.learn.quiz.state.GameState;
 
 import java.io.IOException;
 
-public class Lobby {
-
-    public static void loadScene() {
+public class GameEnd {
+    public static GameState state;
+    public static void loadScene(GameState s) {
+        state = s;
         // Setting new scene means stage properties will get reset, thus method sets new root
         loadRoot();
     }
+
     static Parent root = null;
     private static void loadRoot() {
         root = getRoot();
         show(root);
     }
 
-    // Get root: GameSetup root.
     private static Parent getRoot() {
-        if (root == null){
-            try {
-                root = FXMLLoader.load(Main.class.getResource("lobby/Lobby.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            root = FXMLLoader.load(Main.class.getResource("gameEnd/GameEnd.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return root;
     }
