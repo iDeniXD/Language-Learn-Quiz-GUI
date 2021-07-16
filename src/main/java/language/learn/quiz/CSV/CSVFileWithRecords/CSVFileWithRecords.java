@@ -2,7 +2,6 @@ package language.learn.quiz.CSV.CSVFileWithRecords;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
-import language.learn.quiz.Main;
 import language.learn.quiz.hallOfFame.HallOfFame;
 
 import java.io.*;
@@ -19,9 +18,6 @@ public class CSVFileWithRecords {
         try {
             CSVWriter writer = new CSVWriter(new FileWriter(fileName, true));
             writer.writeNext(record);
-
-            HallOfFame.reload();
-
             writer.close();
         } catch (IOException e){
             throw new RuntimeException("Could not find file", e);
@@ -49,21 +45,6 @@ public class CSVFileWithRecords {
         reader.close();
         csvreader.close();
 
-        filter(list);
-
-        return list;
-    }
-
-    private static List<String[]> filter(List<String[]> list) {
-        for (int i = 0; i < list.get(0).length; i++) {
-            // Replacing all trues and falses in Using Parts of Speech to Yes and No
-            //TODO try to make this method by using csvreader
-            if (list.get(0)[i].contains("Using Parts of Speech")){
-                for (int j = 1; j < list.size(); j++) {
-                    list.get(j)[i] = (list.get(j)[i].contains("true") ? "Yes" : "No");
-                }
-            }
-        }
 
         return list;
     }

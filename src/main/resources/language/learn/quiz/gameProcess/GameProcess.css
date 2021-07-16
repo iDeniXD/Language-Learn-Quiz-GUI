@@ -1,0 +1,11 @@
+.counters {
+    -fx-font-family: Arial;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 17;
+    -fx-wrap-text: true;
+}
+.pressed {
+    -fx-text-fill: -fx-text-darker1;
+    -fx-background-insets: 5,5,5,5, 4 4 -4 -4;
+    -fx-border-insets: 4 4 -4 -4;
+}

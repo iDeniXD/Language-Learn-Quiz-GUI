@@ -2,22 +2,38 @@ package language.learn.quiz.languages;
 
 import language.learn.quiz.Additional;
 
-public class Languages {
-    private static String[] languages = new String[]{"RUS","ENG","Mixed"};
-    public static String RUS(){
-        return "RUS";
+public enum Languages {
+    RUS,
+    ENG,
+    RANDOM;
+
+
+    private static String first(){
+        return String.valueOf(RUS);
     }
-    public static String ENG(){
-        return "ENG";
+    private static String second(){
+        return String.valueOf(ENG);
     }
-    public static String Mixed() {
-        if (Additional.rnd.nextBoolean()) {
-            return RUS();
-        } else {
-            return ENG();
-        }
+    private static String third(){
+        return String.valueOf(RANDOM);
     }
-    public static String getLanguage(int index) throws IndexOutOfBoundsException {
+        private static final String[] languages = new String[]{first(),second(),third()};
+    public static String getLanguage(int index) {
         return languages[index];
+    }
+
+
+    private static String firstTypeOfGame() {
+        return "From "+first()+" to "+second();
+    }
+    private static String secondTypeOfGame() {
+        return "From "+second()+" to "+first();
+    }
+    private static String thirdTypeOfGame() {
+        return third();
+    }
+        private static final String[] types = new String[]{firstTypeOfGame(),secondTypeOfGame(),thirdTypeOfGame()};
+    public static String getTypeOfGameAsTitle(int index){
+        return types[index];
     }
 }

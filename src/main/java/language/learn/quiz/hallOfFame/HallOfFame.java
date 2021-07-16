@@ -38,73 +38,8 @@ public class HallOfFame {
         Main.setRoot(root);
     }
 
-    public static void reload() {
+    public static void resetScene() {
         root = null;
     }
 
-
-    @FXML
-    public void initialize(){
-        setup();
-    }
-
-    @FXML
-    GridPane GridPaneWithRecords;
-    private void setup() {
-        var records = getRecords();
-        addRecordsToGridPane(GridPaneWithRecords,records);
-    }
-
-    private static void addRecordsToGridPane(GridPane gp, List<String[]> records) {
-        SetConstraints(gp,records);
-        for (int i = 0; i < records.size(); i++) {
-            addRecordToGridPane(gp,i,records.get(i));
-        }
-    }
-
-    private static void SetConstraints(GridPane gp, List<String[]> records) {
-        setColumnConstraints(gp,records.get(0).length);
-        setRowConstraints(gp,records.size());
-    }
-
-    private static void setColumnConstraints(GridPane gp, int length) {
-        while (gp.getColumnConstraints().size() < length) {
-            gp.getColumnConstraints().add(new ColumnConstraints());
-        }
-        gp.getColumnConstraints().forEach(col -> {
-            col.setHgrow(Priority.ALWAYS);
-            col.setHalignment(HPos.CENTER);
-            col.setPercentWidth(100);
-        });
-    }
-    private static void setRowConstraints(GridPane gp, int size) {
-        while (gp.getRowConstraints().size() < size) {
-            gp.getRowConstraints().add(new RowConstraints());
-        }
-        gp.getRowConstraints().forEach(row -> {
-            row.setPrefHeight(-1);
-            row.setVgrow(Priority.ALWAYS);
-            row.setValignment(VPos.CENTER);
-            row.setMinHeight(-1);
-//            How did i found out exactly these fields must be set? Do sout of every row.get... method and compare them
-        });
-        gp.getRowConstraints().get(0).setVgrow(Priority.ALWAYS);
-    }
-    private static void addRecordToGridPane(GridPane gp, int i, String[] strings) {
-        Label recordLabel;
-        for (int j = 0; j < strings.length; j++) {
-            recordLabel = new Label(strings[j]);
-            recordLabel.setWrapText(true);
-            recordLabel.setPadding(new Insets(10));
-            gp.add(recordLabel,j,i+(strings[0].contains("User") ? 0 : 1));
-        }
-    }
-    private static List<String[]> getRecords() {
-        var list = CSVFileWithRecords.getRecords();
-        return list;
-    }
-
-    public void goToLobby(ActionEvent actionEvent) {
-        Lobby.loadScene();
-    }
 }

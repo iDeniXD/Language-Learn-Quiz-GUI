@@ -11,10 +11,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import language.learn.quiz.Main;
 import language.learn.quiz.difficulty.Difficulty;
-import language.learn.quiz.gameSetup.nodes.AlertLabel;
+import language.learn.quiz.languages.Languages;
+import language.learn.quiz.nodes.AlertLabel;
 import language.learn.quiz.lobby.Lobby;
-import language.learn.quiz.typeOfGame.ENG_RUS_mixed;
 import language.learn.quiz.user.User;
+import language.learn.quiz.word.Word;
 
 import java.util.HashMap;
 
@@ -41,7 +42,15 @@ public class GameSetupController {
 
     private void setup() {
         setupLabels();
+        setupRadioButtonsFocus();
         setupListeners();
+    }
+
+    private void setupRadioButtonsFocus() {
+//        ((RadioButton)difficultyToggles.getToggles().get(0)).setFocusTraversable(true);
+        ((RadioButton)difficultyToggles.getToggles().get(0)).requestFocus();
+        ((RadioButton)difficultyToggles.getToggles().get(1)).requestFocus();
+        ((RadioButton)difficultyToggles.getToggles().get(2)).requestFocus();
     }
 
     private void setupLabels() {
@@ -50,12 +59,12 @@ public class GameSetupController {
     }
 
     private void setDifficultiesText() {
-        // These radioButtons text is 1/2/3 which is index of difficulty. When scene is being set, the text of the buttons needs to be replaced to an appropriate difficulty
+        // These radioButtons text is 0/1/2 which is index of difficulty. When scene is being set, the text of the buttons needs to be replaced to an appropriate difficulty
         difficultyToggles.getToggles().forEach(button->
                 ((RadioButton) button).setText(
                         Difficulty.getDifficultyByIndex(
                         Integer.parseInt(((RadioButton)button) // Index taken as Integer
-                                .getText() // 1/2/3
+                                .getText() // 0/1/2
                                 .strip()) // Text might have redudant spaces
                         )
                 )
@@ -66,9 +75,9 @@ public class GameSetupController {
     private void setTypeOfGameText() {
         typeOfGameToggles.getToggles().forEach(button->
                 ((RadioButton) button).setText(
-                        ENG_RUS_mixed.getTypeByIndex(
+                        Languages.getTypeOfGameAsTitle(
                                 Integer.parseInt(((RadioButton)button) // Index taken as Integer
-                                        .getText() // 1/2/3
+                                        .getText() // 0/1/2
                                         .strip()) // Text might have redudant spaces
                         )
                 )
@@ -78,7 +87,7 @@ public class GameSetupController {
     // User chooses game settings and they get saved in these variables:
     static public Short difficultyChosen;
     static public Short typeOfGameChosen;
-    static public Boolean partOfSpeechChosen = false;
+    static public Boolean partOfSpeechChosen;
     static public String usernameChosen;
 
     private static final HashMap<VBox,String> objectsToHighlight = new HashMap<>();
@@ -136,10 +145,13 @@ public class GameSetupController {
             );
             // Remove the group from nodes which will get highlighted if user is trying to start game w/o selecting one of its RadioButtons
             objectsToHighlight.remove(typeOfGameTogglesVBox);
+            // Set Word class static field which defines what language will the given word required to be translated to
+            Word.setTypeOfGame(typeOfGameChosen);
         });
     }
     private void setPartOfSpeechToggleListener() {
         // When ToggleButton os selected
+        partOfSpeechChosen = false;
         partOfSpeechToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
             // Set chosen option
             partOfSpeechChosen = partOfSpeechToggle.isSelected();
@@ -191,16 +203,9 @@ public class GameSetupController {
             result = true;
             //objectsToChoose.get(box) - appropriate message for certain vbox
             alertLabel = new AlertLabel(objectsToChoose.get(box));
+            alertLabel.setPositionRelatively(box.getChildren().get(0));
 
-            // Set alertLabel position in the scene
-            boundsInScene = box.getChildren().get(0).localToScene(box.getChildren().get(0).getBoundsInLocal());
-            alertLabel.setLayoutX(boundsInScene.getMinX());
-            alertLabel.setLayoutY(boundsInScene.getMinY());
-
-            // for css file
-            // TODO when changing whole css structure, do not forget this one
-            alertLabel.setId("WarningText");
-
+            // Add label to scene
             rootAnchorPane.getChildren().add(alertLabel);
 
 

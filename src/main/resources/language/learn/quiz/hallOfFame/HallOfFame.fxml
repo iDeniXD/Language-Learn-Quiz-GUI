@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" styleClass="MainPanel" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.hallOfFame.HallOfFame">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" styleClass="MainPanel" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.hallOfFame.HallOfFameController">
     <children>
         <Button mnemonicParsing="false" onAction="#goToLobby" text="Back" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="36.0">
             <font>
                 <Font size="38.0" />
             </font>
         </Button>
-      <ScrollPane id="ScrollPaneWithRecords" fitToWidth="true" hbarPolicy="NEVER" style="-fx-focus-traversable: false;" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="36.0">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="36.0">
          <content>
             <GridPane fx:id="GridPaneWithRecords" gridLinesVisible="true">
               <rowConstraints>

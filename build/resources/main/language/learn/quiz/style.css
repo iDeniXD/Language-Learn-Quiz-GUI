@@ -1,90 +1,131 @@
 * {
+    -fx-focus-traversable: false;
     -fx-background: #7D6F86;
     -fx-background-lighter1: #A59BAB;
     -fx-background-lighter2: #CDC7D1;
+
     -fx-text: #FFFFFF;
     -fx-text-darker1: #B8B8B8;
+
     -fx-header: #F9564F;
-    -fx-button-pressed: -fx-background-lighter2;
-    -fx-button-selected: -fx-header;
+    -fx-header-darker1: #F8403A;
+    -fx-header-lighter1: #faccca;
+
     -fx-button-unselected: -fx-background-lighter1;
-    -fx-button-hovered: #FFFFFF70;
-    /*https://coolors.co/67597a-f5fbef-544e61-008148-cb9cf2*/
+    -fx-button-hovered: -fx-background-lighter2;
+    -fx-button-pressed: -fx-background-lighter2;
+
+    -fx-button-selected: -fx-header;
+    -fx-button-hovered-selected: -fx-header-lighter1;
+    -fx-button-pressed-selected: -fx-header-darker1;
+
+    -fx-text-secondary: -fx-header;
+    /*https://coolors.co/7d6f86-ffffff-f9564f-240115*/
+
+
+    -fx-text-fill: -fx-text;
+    -fx-font-family: "Courier New";
 
 }
-
-
 .MainPanel{
     -fx-background-color: -fx-background;
-
 }
-* {
-    -fx-font-family: Arial;
-    -fx-text-fill: -fx-text;
-}
-#PlainText {
-    -fx-font-family: Arial;
+Label {
     -fx-text-fill: -fx-text;
     -fx-font-size: 20;
     -fx-wrap-text: true;
 }
-#SecondaryText {
-    -fx-font-family: Arial;
+AlertLabel {
     -fx-text-fill: -fx-text;
-    -fx-font-size: 17;
-    -fx-wrap-text: true;
-}
-#WarningText {
-    -fx-font-family: Arial;
     -fx-font-size: 20;
     -fx-wrap-text: true;
-
-    -fx-text-fill: -fx-text;
-    -fx-translate-y: -2em;
-    -fx-translate-x: -2em;
-
-    -fx-shape: "M 10 2 C 10 1 11 0 12 0 L 40 0 C 41 0 42 1 42 2 L 42 6 C 42 7 41 8 40 8 L 24 8 L 22 10 L 20 8 L 12 8 C 11 8 10 7 10 6 Z";
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 3, 3);
-    -fx-background-color: -fx-background-lighter1;
-    -fx-background-insets: -4 -5 -10 -5 ;
 }
 
-#GameTitle {
-    -fx-text-fill: -fx-header;
-}
-#Title {
-    -fx-font-size: 20;
-}
-#MainMenuButtons {
-    -fx-font-weight: bold;
-    -fx-font-size: 40;
-}
 
-/*TODO set Label properties the same as #PlainText and remove #PlainText id in every label in each scene*/
-
-Button{
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-background-radius: 20;
-    -fx-background-color: transparent;
-    -fx-cursor: hand;
-    -fx-underline: true;
-    -fx-alignment: BASELINE_LEFT;
-    -fx-text-fill: -fx-text;
+/*Button{*/
+/*    -fx-border-color: transparent;*/
+/*    -fx-border-width: 0;*/
+/*    -fx-background-radius: 20;*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-cursor: hand;*/
+/*    -fx-alignment: BASELINE_LEFT;*/
+/*    -fx-text-fill: -fx-text;*/
+/*    -fx-font-size: 38;*/
+/*}*/
+/*Button:hover {*/
+/*     -fx-text-fill: -fx-text-darker1;*/
+/*     -fx-font-size: 38;*/
+/*}*/
+/*Button:focused {*/
+/*    -fx-text-fill: -fx-text-darker1;*/
+/*    -fx-font-size: 38;*/
+/*}*/
+Button, ToggleButton{
     -fx-font-size: 38;
+    -fx-wrap-text: true;
+    -fx-cursor: hand;
+    -fx-alignment: BASELINE_LEFT;
+
+    -fx-border-width: 1;
+    -fx-border-color: grey;
+    -fx-background-color: darkgrey,darkgrey,darkgrey,darkgrey,darkgrey,lightgrey;
+    -fx-background-insets: 1 1 -1 -1, 2 2 -2 -2, 3 3 -3 -3, 4 4 -4 -4, 0;
+    -fx-text-fill: -fx-text;
+}
+Button:pressed, ToggleButton:pressed{
+    -fx-text-fill: -fx-text-darker1;
+    -fx-background-insets: 5,5,5,5, 4 4 -4 -4;
+    -fx-border-insets: 4 4 -4 -4;
 }
 Button:hover {
     -fx-text-fill: -fx-text-darker1;
     -fx-font-size: 38;
 }
+Button:focused {
+    -fx-text-fill: -fx-text-darker1;
+    -fx-font-size: 38;
+}
+
+ToggleButton {
+    -fx-alignment: CENTER;
+}
+ToggleButton:selected {
+    -fx-background-color: -fx-button-selected,-fx-button-selected,-fx-button-selected,-fx-button-selected,-fx-button-selected,-fx-button-hovered-selected;
+}
+ScrollPane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+
+}
+ScrollPane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+
+}
+ScrollPane .scroll-bar:vertical .thumb {
+    -fx-background-radius: 0;
+    -fx-background-color: grey;
+}
+ScrollPane .scroll-bar:vertical .increment-button, ScrollPane .scroll-bar:vertical .decrement-button  {
+    -fx-background-color: transparent;
+    -fx-padding: 0 10 0 0;
+}
+
+ScrollPane .scroll-bar .increment-arrow, .scroll-bar .decrement-arrow{
+    -fx-shape:"";
+    -fx-padding:0;
+}
+ScrollPane .scroll-bar:horizontal .thumb
+{
+    -fx-background-color: -fx-background-lighter2;
+}
+
 
 RadioButton {
-    -fx-focus-traversable: false;
-
-    -fx-font-family: Arial;
     -fx-text-fill: -fx-text;
-    -fx-font-size: 20;
+    -fx-font-size: 17;
     -fx-wrap-text: true;
+    -fx-focus-color: -fx-header;
 }
 RadioButton:hover{
     -fx-cursor: hand;
@@ -94,41 +135,47 @@ RadioButton:selected .radio .dot {
     -fx-background-insets: 0;
 }
 
-ToggleButton {
-    -fx-focus-traversable: false;
-    -fx-background-radius: 10;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
-    -fx-background-color: -fx-button-hovered, -fx-button-unselected;
-    -fx-min-width: 64;
-    -fx-text-fill: white;
-    -fx-font-size: 20px;
-}
-ToggleButton:pressed{
-    -fx-scale-x: 0.9;
-    -fx-scale-y: 0.9;
-    -fx-scale-z: 0.9;
-    -fx-background-color: -fx-button-pressed;
-
-}
-ToggleButton:selected:hover {
-    /*-fx-background-color: -fx-text;*/
-    -fx-background-insets: 0, 2;
-}
-ToggleButton:hover {
-    -fx-cursor: hand;
-    /*-fx-background-color: -fx-text-fx-text;*/
-    -fx-background-insets: 0, 2;
-}
-ToggleButton:selected {
-    -fx-background-color: -fx-button-hovered, -fx-button-selected;
-}
+/*ToggleButton {*/
+/*    -fx-background-radius: 10;*/
+/*    -fx-background-insets: 0, 0;*/
+/*    !*-fx-background-insets: transparency, hover, unselected;*!*/
+/*    -fx-background-color: -fx-button-hovered, -fx-button-unselected;*/
+/*    -fx-min-width: 64;*/
+/*    -fx-text-fill: white;*/
+/*    -fx-font-size: 20px;*/
+/*    -fx-cursor: hand;*/
+/*}*/
+/*ToggleButton:hover {*/
+/*    -fx-background-insets: 0, 0.08em;*/
+/*}*/
+/*ToggleButton:pressed{*/
+/*    -fx-scale-x: 0.9;*/
+/*    -fx-scale-y: 0.9;*/
+/*    -fx-scale-z: 0.9;*/
+/*    -fx-background-color: -fx-button-pressed;*/
+/*}*/
+/*ToggleButton:selected {*/
+/*    -fx-background-insets: 0, 0;*/
+/*    -fx-background-color: -fx-button-hovered-selected, -fx-button-selected;*/
+/*}*/
+/*ToggleButton:selected:hover {*/
+/*    -fx-background-insets: 0, 0.08em;*/
+/*}*/
+/*ToggleButton:selected:pressed{*/
+/*    -fx-scale-x: 0.9;*/
+/*    -fx-scale-y: 0.9;*/
+/*    -fx-scale-z: 0.9;*/
+/*    -fx-background-color: -fx-button-pressed-selected;*/
+/*}*/
 
 TextField {
+    -fx-focus-traversable: true;
     -fx-background-radius: 8;
     -fx-text-fill: -fx-background;
+    -fx-background-color: -fx-header, darkgrey, white;
+    -fx-background-insets: 0, 0, 1;
 
 }
 TextField:focused {
-    -fx-faint-focus-color: -fx-header;
-    -fx-background-insets: 0 0 0 0, 0, -2, 0;
+    -fx-background-insets: 0, 2, 2;
 }

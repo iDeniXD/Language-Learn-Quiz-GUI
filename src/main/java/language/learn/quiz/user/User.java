@@ -9,22 +9,18 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class User {
-    // Get user name
-    public static String getName() {
-        System.out.print("Input your name: ");
-        return Additional.getString();
-    }
     private static String clean(String answer) {
-        return answer;
-//                .replaceAll("\\s+","")
-//                .strip();
+        return answer
+                .replaceAll("\\s+"," ")
+                .replaceAll("to ","")
+                .strip()
+        ;
     }
 
 
-    public static boolean isCorrectAnswer(Word word, String givenAnswer) {
+    public static boolean isCorrectTranslation(Word word, String givenAnswer) {
         try {
             // Get answer to word. Return whether it's correct or not
-            // TODO problem with russian
             givenAnswer = clean(givenAnswer);
             if (givenAnswer.length()==0) return false;
             return anyMatches(givenAnswer,word.translation);
@@ -38,13 +34,8 @@ public class User {
         givenType = clean(givenType);
 
         if (givenType.length()==0) return false;
-//           System.out.println("Word type: "+word.type+"; is it verb? : "+word.type.contains("verb"));
-//           System.out.println("Word type: "+word.type+"; is it noun? : "+word.type.contains("noun"));
-//           System.out.println("Word type: "+word.type+"; is it misc? : "+word.type.contains("misc"));
-//           System.out.println("Word type: "+word.type+"; is it adjective? : "+word.type.contains("adjective"));
         String finalGivenType = givenType;
-        return Stream.of(word.type.split(",")).anyMatch(i -> i.strip().equals(finalGivenType));
-//        return word.type.contains(type);
+        return Stream.of(word.partOfSpeech.split(",")).anyMatch(i -> i.strip().equals(finalGivenType));
     }
 
     private static boolean anyMatches(String answer, String toMatchTO) {

@@ -1,0 +1,15 @@
+.gameTitle {
+    -fx-text-fill: -fx-header;
+    -fx-wrap-text: true;
+}
+.first {
+    -fx-font-size: 94;
+    -fx-wrap-text: false;
+}
+.second {
+    -fx-font-size: 61;
+}
+.LobbyButton {
+    -fx-font-weight: bold;
+    -fx-font-size: 40;
+}

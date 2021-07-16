@@ -1,17 +1,24 @@
 package language.learn.quiz;
 
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import language.learn.quiz.lobby.Lobby;
+import language.learn.quiz.transitions.Transitions;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 
 public class Main extends Application {
 
@@ -38,27 +45,29 @@ public class Main extends Application {
     }
 
     private void setScene() {
-        scene = new Scene(new AnchorPane());
-        //style.css for all scenes that will be used in the application
-        //TODO divide style.css into multiple css files and apply each of them to certain scene
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene = new Scene(new AnchorPane(), Color.rgb(125,111,134));
     }
 
     private void setStage(Stage primaryStage) {
         primaryStage.setTitle("Language Learn Quiz");
-        // TODO create icon
-//        primaryStage.getIcons().add(new Image(""));
         primaryStage.setScene(scene);
         primaryStage.setMinHeight(650);
-        primaryStage.setMinWidth(650);
+        primaryStage.setMinWidth(722);
         primaryStage.setWidth(650);
-        primaryStage.setHeight(650);
+        primaryStage.setHeight(722);
+        primaryStage.getIcons().add(new Image(String.valueOf(getClass().getResource("icon/icon.png"))));
         primaryStage.show();
         stage = primaryStage;
     }
 
     public static void setRoot(Parent root) {
         stage.getScene().setRoot(root);
+        setupRoot(root);
+    }
+
+    private static void setupRoot(Parent root) {
+        Transitions.rootTransitionAppear(root);
+        root.requestFocus();
     }
 
 }

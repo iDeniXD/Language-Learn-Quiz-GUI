@@ -1,119 +1,119 @@
 package language.learn.quiz.word;
 
+import language.learn.quiz.Additional;
 import language.learn.quiz.languages.Languages;
 
 public class Word {
-    public String type;
+    private static short typeOfGame;
+    public static void setTypeOfGame(Short typeOfGameChosen) {
+        typeOfGame = typeOfGameChosen;
+    }
+    public static short getTypeOfGame() {
+        return typeOfGame;
+    }
+
     public String original;
     public String translation;
-    private String clarification;
-    private String translateTo;
+    public String partOfSpeech;
+    public String clarification;
+    public String translateToLanguage;
 
-    public String getClarification() {
-        return clarification;
+    public Word(String[] wordLine) {
+        // Set fields according to CSV file
+        this.original = wordLine[0];
+        this.translation = wordLine[1];
+        this.partOfSpeech = wordLine[2];
+    }
+    public void setup(){
+        // If there is clarification in translation (typically in brackets or after semicolon), then this needs to get saved into clarification variable
+        setClarification();
+
+        // Clean fields from unneeded stuff like CSV file site origin references and other
+        cleanFields();
+
+        // If chosen type of game (ENG->RUS or MIXED) requires user to translate to RUS, then fields original and translation need to be switched
+        switchFieldsIfNeeded();
     }
 
-    public void setClarification(String clarification) {
-        this.clarification = clarification;
-    }
-    public void setClarification() {
-        translation = cleanThisField(translation);
+    private void setClarification() {
+        this.clarification = "";
+        // After semicolon
         if (translation.contains(";")) {
             this.clarification = this.translation.substring(this.translation.indexOf(";")+1);
             this.translation = this.translation.substring(0,this.translation.indexOf(";"));
-        } else {
-            this.clarification = "";
         }
+        // In brackets
         if (translation.contains("(")) {
-            this.clarification =  this.translation.substring(this.translation.indexOf("(")+1,this.translation.indexOf(")")) + ((!this.clarification.equals("")) ? (". " + this.clarification) : "");
+            this.clarification =  this.translation.substring(this.translation.indexOf("(")+1,this.translation.indexOf(")")) + ((this.clarification.equals("")) ? "" : (". " + this.clarification));
             translation = translation.replaceAll("\\(.*?\\)","");
-
         }
-        //Пропустить clarification через masterrussin, dot и com
     }
 
-
-    public String getTranslateTo() {
-        return translateTo;
+    private void cleanFields() {
+        // Clean each field
+        original = clean(original);
+        translation = clean(translation);
+        partOfSpeech = clean(partOfSpeech);
+        clarification = clean(clarification);
     }
 
-    public void setTranslateTo(String translateTo) {
-        if (!translateTo.equals(this.translateTo)) {
-            switchTranslations();
-        }
-        this.translateTo = translateTo;
-    }
-    public void setTranslateTo(int typeOfGame) {
-        setClarification();
-        var language = Languages.getLanguage(typeOfGame);
-        this.translateTo = language;
-        if (language.equals("Mixed")) {
-            language = Languages.Mixed();
-        }
-        if (language.equals(Languages.RUS())) {
-            switchTranslations();
-        }
-            this.translateTo = language;
+    private String clean(String field) {
+        field = cleanWaterMarks(field);
+        field = cleanReferences(field);
+        field = cleanSymbols(field);
+        return field;
     }
 
-    private void switchTranslations() {
-        var tmp = original;
-        original = translation;
-        translation = tmp;
+    private String cleanWaterMarks(String field) {
+        final String[] marks = new String[]{"masterrussian","dot","com"};
+        for (String mark : marks) {
+            field = field.replaceAll("\\b%s\\b".formatted(mark),"");
+        }
+        return field;
     }
 
-    public void clean() {
-        this.original = cleanThisField(this.original);
-        this.translation = cleanThisField(this.translation);
-        this.type = cleanThisField(this.type);
-        this.clarification = cleanThisField(this.clarification);
+    private String cleanReferences(String field) {
+        final String[] marks = new String[]{"\\(See #(\\d)+\\)","\\(see #(\\d)+\\)","see #(\\d)","See #(\\d)"};
+        for (String mark : marks) {
+            field = field.replaceAll(mark, "");
+        }
+        return field;
     }
 
-    private static String[] wordsPattern = new String[]{"masterrussian","dot, com","dot com","com"};
-    private static String[] notePattern = new String[]{"\\(See #(\\d)+\\)","\\(see #(\\d)+\\)","see #(\\d)","See #(\\d)"};
-    private String cleanThisField(String field) {
-//        field = " "+field+" ";
-//        for (var p:
-//                wordsPattern) {
-//            var indexOfPattern = field.indexOf(p);
-//            if (indexOfPattern != -1) {
-//                if (!(String.valueOf(field.charAt(indexOfPattern+p.length())).matches("[\\p{IsAlphabetic}]") ||
-//                    String.valueOf(field.charAt(indexOfPattern-1)).matches("[\\p{IsAlphabetic}]"))) {
-//                    field = field.replaceAll(p, "");
-//                }
-//            }
-//        }
-//        for (var p:
-//                notePattern) {
-//            field = field.replaceAll(p,"");
-//        }
-        for (String p :
-                wordsPattern) {
-            if (!(field.matches(".*%s[\\p{IsAlphabetic}].*".formatted(p)) || field.matches(".*%s[\\p{IsAlphabetic}].*".formatted(p)))) {
-                field = field.replaceAll(p, "");
-            }
-        }
-//        for (String p :
-//                wordsPattern) {
-//            field = field.replaceAll(p,"");
-//        }
-        for (String p:
-                notePattern) {
-            field = field.replaceAll(p, "");
-        }
+    private String cleanSymbols(String field) {
+        // If non-alphabetic symbol at the end -> remove it
         while (field.matches(".*[^\\p{IsAlphabetic}.\")]$")) {
             field = field.substring(0,field.length()-1);
         }
-        while (field.matches("^[^\\p{IsAlphabetic}.\"'(].*")) {
+        // If non-alphabetic symbol at the beginning -> remove it
+        while (field.matches("^[^\\p{IsAlphabetic}\"'(].*")) {
             field = field.substring(1);
         }
+        // If no alphabetic symbols found -> make empty string
         if(!field.matches(".*[\\p{IsAlphabetic}].*")){
             field = "";
         }
-        return field
+        // Remove possible multiple symbols
+        field = field
                 .replaceAll("[.+]",".")
                 .replaceAll("[,+]",",")
                 .replaceAll("\\s+"," ")
                 .strip();
+        return field;
+    }
+
+    private void switchFieldsIfNeeded() {
+        translateToLanguage = Languages.getLanguage(1);
+        if ((typeOfGame == 1) || (typeOfGame == 2 && Additional.rnd.nextBoolean())) {
+            translateToLanguage = Languages.getLanguage(0);
+            switchFields();
+        } else {
+            this.clarification = "";
+        }
+    }
+    private void switchFields() {
+        var tmp = this.original;
+        this.original = this.translation;
+        this.translation = tmp;
     }
 }

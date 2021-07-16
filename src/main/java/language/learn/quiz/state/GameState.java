@@ -7,7 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import language.learn.quiz.Main;
 import language.learn.quiz.CSV.CSVFileWithRecords.CSVFileWithRecords;
-import language.learn.quiz.typeOfGame.ENG_RUS_mixed;
+import language.learn.quiz.hallOfFame.HallOfFame;
+import language.learn.quiz.languages.Languages;
 import language.learn.quiz.user.User;
 
 import java.io.IOException;
@@ -30,12 +31,13 @@ public class GameState {
         CSVFileWithRecords.makeRecord(record);
         // In order to update records in case user decides to start new game
         User.takenUsernames = null;
+        HallOfFame.resetScene();
     }
 
     private String[] prepareRecord(int numberOfWords, int typeOfGame, boolean usingPartsOfSpeech, String name) {
         SimpleDateFormat formatter= new SimpleDateFormat("HH:mm:ss yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
         this.date = formatter.format(date);
-        return new String[]{name,String.valueOf(numberOfWords), String.valueOf(ENG_RUS_mixed.getTypeByIndex(typeOfGame)), String.valueOf(usingPartsOfSpeech), String.valueOf(points),this.date};
+        return new String[]{name,String.valueOf(numberOfWords), String.valueOf(Languages.getLanguage(typeOfGame)), usingPartsOfSpeech ? "Yes" : "No", String.valueOf(points),this.date};
     }
 }
