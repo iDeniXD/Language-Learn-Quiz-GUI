@@ -13,7 +13,7 @@ import language.learn.quiz.Main;
 import language.learn.quiz.difficulty.Difficulty;
 import language.learn.quiz.languages.Languages;
 import language.learn.quiz.nodes.AlertLabel;
-import language.learn.quiz.lobby.Lobby;
+import language.learn.quiz.gameLobby.GameLobby;
 import language.learn.quiz.user.User;
 import language.learn.quiz.word.Word;
 
@@ -42,15 +42,7 @@ public class GameSetupController {
 
     private void setup() {
         setupLabels();
-        setupRadioButtonsFocus();
         setupListeners();
-    }
-
-    private void setupRadioButtonsFocus() {
-//        ((RadioButton)difficultyToggles.getToggles().get(0)).setFocusTraversable(true);
-        ((RadioButton)difficultyToggles.getToggles().get(0)).requestFocus();
-        ((RadioButton)difficultyToggles.getToggles().get(1)).requestFocus();
-        ((RadioButton)difficultyToggles.getToggles().get(2)).requestFocus();
     }
 
     private void setupLabels() {
@@ -59,7 +51,8 @@ public class GameSetupController {
     }
 
     private void setDifficultiesText() {
-        // These radioButtons text is 0/1/2 which is index of difficulty. When scene is being set, the text of the buttons needs to be replaced to an appropriate difficulty
+        // These radioButtons text is 0/1/2 which is index of difficulty.
+        // When scene is being set, the text of the buttons needs to be replaced to an appropriate difficulty
         difficultyToggles.getToggles().forEach(button->
                 ((RadioButton) button).setText(
                         Difficulty.getDifficultyByIndex(
@@ -70,9 +63,9 @@ public class GameSetupController {
                 )
         );
     }
-    // These radioButtons text is 1/2/3 which is index of a type of the game (RUS-ENG,ENG-RUS,MIXED).
-    // When scene is being set, the text of the buttons needs to be replaced to an appropriate type of the game
     private void setTypeOfGameText() {
+        // These radioButtons text is 1/2/3 which is index of a type of the game (RUS-ENG,ENG-RUS,MIXED).
+        // When scene is being set, the text of the buttons needs to be replaced to an appropriate type of the game
         typeOfGameToggles.getToggles().forEach(button->
                 ((RadioButton) button).setText(
                         Languages.getTypeOfGameAsTitle(
@@ -90,6 +83,7 @@ public class GameSetupController {
     static public Boolean partOfSpeechChosen;
     static public String usernameChosen;
 
+    // objectsToHighlight - explained in the further comment
     private static final HashMap<VBox,String> objectsToHighlight = new HashMap<>();
     private void setupListeners() {
         // Set listeners for selection nodes
@@ -150,7 +144,7 @@ public class GameSetupController {
         });
     }
     private void setPartOfSpeechToggleListener() {
-        // When ToggleButton os selected
+        // When ToggleButton is selected
         partOfSpeechChosen = false;
         partOfSpeechToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
             // Set chosen option
@@ -181,7 +175,7 @@ public class GameSetupController {
 
     //Button Back
     public void goToLobby(ActionEvent actionEvent) {
-        Lobby.loadScene();
+        GameLobby.loadScene();
     }
 
     //Button Play

@@ -1,25 +1,22 @@
-package language.learn.quiz.process;
+package language.learn.quiz.gameProcess;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import language.learn.quiz.CSV.CSVFileWithWords.CSVFileWithWords;
+import language.learn.quiz.gameLobby.GameLobby;
 import language.learn.quiz.nodes.AlertLabel;
-import language.learn.quiz.lobby.Lobby;
 import language.learn.quiz.nodes.PointsLabel;
 import language.learn.quiz.user.User;
 import language.learn.quiz.word.Word;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class GameProcessController {
     // Nodes that will be used in the class methods
@@ -29,8 +26,6 @@ public class GameProcessController {
     Button nextWord, backToLobby;
     @FXML
     Label givenWord, partOfSpeechLabel, translationLabel, wordInTheCount;
-//    @FXML
-//    Label points;
     @FXML
     TextField partOfSpeechField, translationField;
     @FXML
@@ -62,16 +57,20 @@ public class GameProcessController {
 
     // Button Back to Lobby
     public void goToLobby(ActionEvent actionEvent) {
-        Lobby.loadScene();
+        GameLobby.loadScene();
     }
 
     public void StartGame(ActionEvent actionEvent) {
         // At the beginning each node which will be used in the game is disabled
         enableFields(contentGridPane);
+
         // When game starts:
         // Back to Lobby -> End game
         // Start! -> Next word
         changeButtons();
+
+        // When Enter is pressed -> nextWord button gets pressed (adding .pressed class)
+        // When Enter is released -> nextWord button gets released (removing .pressed class)
         setListeners();
         setNodes();
         // Game starts with a word given to user
@@ -96,32 +95,29 @@ public class GameProcessController {
         //Button backToLobby
         backToLobby.setText("End game");
         backToLobby.setOnAction(event -> {
-            Lobby.loadScene();
+            GameLobby.loadScene();
         });
     }
 
     private void setListeners() {
         var classStyle = "pressed";
-        GameProcess.root.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER) {
-                    nextWord.getStyleClass().remove(classStyle);
-                    nextWord();
-                }
+        // Released -> removing .pressed class
+        GameProcess.root.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                nextWord.getStyleClass().remove(classStyle);
+                nextWord();
             }
         });
-        GameProcess.root.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                nextWord.getStyleClass().remove(classStyle);
-                if (event.getCode() == KeyCode.ENTER) {
-                    nextWord.getStyleClass().add(classStyle);
-                }
+        // Pressed -> adding .pressed class
+        GameProcess.root.setOnKeyPressed(event -> {
+            nextWord.getStyleClass().remove(classStyle); // If enter is pressed for long time, the class will be
+                                                         // added to the node multiple times, thus it is required to remove it before adding it again
+            if (event.getCode() == KeyCode.ENTER) {
+                nextWord.getStyleClass().add(classStyle);
             }
         });
     }
-    public PointsLabel points;
+    public PointsLabel points; // Custom label which has an effect when its text gets changed
     private void setNodes() {
         points = new PointsLabel("0");
         pointsGridPane.add(points,1,0);
@@ -129,7 +125,7 @@ public class GameProcessController {
     }
 
     private void nextWord() {
-        checkIfCorrect();
+        checkIfCorrect(); // if correct - add points
         if (isGameEnd()) {
             gameEnd();
         } else {
@@ -142,9 +138,9 @@ public class GameProcessController {
         if (word == null) {
             return;
         }
-        if (User.isCorrectTranslation(word,translationField.getText())) {
-            if (GameProcess.state.usingPartsOfSpeech) {
-                if (User.isCorrectPart(word,partOfSpeechField.getText())) {
+        if (User.isCorrectTranslation(word,translationField.getText())) { // check for correct translation of the word
+            if (GameProcess.state.usingPartsOfSpeech) { // if game option to guess part of speech of the word is on...
+                if (User.isCorrectPart(word,partOfSpeechField.getText())) { // then check if given part is correct
                     setPoints();
                 }
             } else {
@@ -155,23 +151,22 @@ public class GameProcessController {
 
     private void setPoints() {
         GameProcess.state.points++;
-        points.setText(String.valueOf(GameProcess.state.points));
+        points.setText(String.valueOf(GameProcess.state.points)); // Label which displays points
     }
 
     private void giveNextWord() {
         word = getWord();
         showWord();
-        showClarification();
+        showClarification(); // if such exists
         setupTextNodes();
-        focusOnFirstTextField();
+        focusOnFirstTextField(); // convenient thing
     }
 
-    // Run these Runnables (alertLabel disappearing) when new word given, meaning no more need in clarification popup
+    // Run these Runnables (alertLabel disappearing) when new word given, meaning no more need in clarification popup (deleting it)
     List<Runnable> runWhenNewWordGiven = new ArrayList<>();
     private Word getWord() {
         runWhenNewWordGiven.forEach(Runnable::run);
         return CSVFileWithWords.getWord();
-//        return CSVFileWithWords.getWord(GameProcess.state.typeOfGame);
     }
 
     private void showWord() {
@@ -199,11 +194,13 @@ public class GameProcessController {
         createListener(alertLabel);
     }
 
+    // Get avg time user needs to read the clarification. Minimum: 3000ms
     private long getTimeToRead(String line) {
         return 300*(line.chars().filter(ch -> ch == ' ').count()+1) + 3000;
     }
 
     private void createListener(AlertLabel alertLabel) {
+        // Add to runWhenNewWordGiven removing the created alertLabel with clarification
         runWhenNewWordGiven.add(() -> alertLabel.disappear(rootAnchorPane.getChildren()));
     }
 

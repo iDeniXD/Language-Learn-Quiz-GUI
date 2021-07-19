@@ -1,20 +1,10 @@
 package language.learn.quiz.hallOfFame;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.VPos;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.layout.*;
 import language.learn.quiz.Main;
-import language.learn.quiz.CSV.CSVFileWithRecords.CSVFileWithRecords;
-import language.learn.quiz.lobby.Lobby;
 
 import java.io.IOException;
-import java.util.List;
 
 
 public class HallOfFame {
@@ -38,6 +28,7 @@ public class HallOfFame {
         Main.setRoot(root);
     }
 
+    // When new record is made, the scene needs to be reloaded
     public static void resetScene() {
         root = null;
     }

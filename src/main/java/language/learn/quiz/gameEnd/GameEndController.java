@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import language.learn.quiz.lobby.Lobby;
+import language.learn.quiz.gameLobby.GameLobby;
 
 public class GameEndController {
     // Nodes that will be used in the class methods
@@ -29,6 +29,7 @@ public class GameEndController {
     }
 
     private void setupLabels() {
+        // Simply show the result user has achieved
         nameLabel.setText(GameEnd.state.name);
         numberOfWordsGivenLabel.setText(String.valueOf(GameEnd.state.numberOfWords));
         pointsLabel.setText(String.valueOf(GameEnd.state.points));
@@ -37,6 +38,6 @@ public class GameEndController {
     }
 
     public void goToLobby(ActionEvent actionEvent) {
-        Lobby.loadScene();
+        GameLobby.loadScene();
     }
 }

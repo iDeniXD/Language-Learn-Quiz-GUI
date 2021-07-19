@@ -1,23 +1,17 @@
 package language.learn.quiz.nodes;
 
-import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
-import language.learn.quiz.Main;
 import language.learn.quiz.transitions.Transitions;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class AlertLabel extends Label {
-    public AlertLabel() {
-        appear();
-    }
 
     public AlertLabel(String text) {
         super(text);

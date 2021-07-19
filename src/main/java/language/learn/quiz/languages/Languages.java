@@ -1,7 +1,5 @@
 package language.learn.quiz.languages;
 
-import language.learn.quiz.Additional;
-
 public enum Languages {
     RUS,
     ENG,

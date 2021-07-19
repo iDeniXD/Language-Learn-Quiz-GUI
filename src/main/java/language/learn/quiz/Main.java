@@ -1,24 +1,16 @@
 package language.learn.quiz;
 
-import javafx.animation.ScaleTransition;
-import javafx.animation.TranslateTransition;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import language.learn.quiz.lobby.Lobby;
+import language.learn.quiz.gameLobby.GameLobby;
 import language.learn.quiz.transitions.Transitions;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 
 public class Main extends Application {
 
@@ -41,7 +33,7 @@ public class Main extends Application {
         setStage(primaryStage);
 
         // Load lobby scene
-        Lobby.loadScene();
+        GameLobby.loadScene();
     }
 
     private void setScene() {
@@ -66,7 +58,9 @@ public class Main extends Application {
     }
 
     private static void setupRoot(Parent root) {
+        // Beautiful scene appearing
         Transitions.rootTransitionAppear(root);
+        // To prevent default focus on a random button
         root.requestFocus();
     }
 

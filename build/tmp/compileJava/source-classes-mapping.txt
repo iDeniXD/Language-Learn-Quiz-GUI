@@ -1,52 +1,48 @@
+language/learn/quiz/Additional.java
+ language.learn.quiz.Additional
+language/learn/quiz/languages/Languages.java
+ language.learn.quiz.languages.Languages
+language/learn/quiz/user/User.java
+ language.learn.quiz.user.User
 language/learn/quiz/nodes/PointsLabel.java
  language.learn.quiz.nodes.PointsLabel
-language/learn/quiz/hallOfFame/HallOfFame.java
- language.learn.quiz.hallOfFame.HallOfFame
-language/learn/quiz/gameEnd/GameEndController.java
- language.learn.quiz.gameEnd.GameEndController
-language/learn/quiz/partOfSpeech/PartsOfSpeech.java
- language.learn.quiz.partOfSpeech.PartsOfSpeech
+language/learn/quiz/CSV/CSVFileWithRecords/CSVFileWithRecords.java
+ language.learn.quiz.CSV.CSVFileWithRecords.CSVFileWithRecords
+language/learn/quiz/transitions/Transitions.java
+ language.learn.quiz.transitions.Transitions
 language/learn/quiz/nodes/AlertLabel.java
  language.learn.quiz.nodes.AlertLabel
  language.learn.quiz.nodes.AlertLabel$1
-language/learn/quiz/lobby/Lobby.java
- language.learn.quiz.lobby.Lobby
-language/learn/quiz/CSV/CSVFileWithRecords/CSVFileWithRecords.java
- language.learn.quiz.CSV.CSVFileWithRecords.CSVFileWithRecords
-language/learn/quiz/hallOfFame/HallOfFameController.java
- language.learn.quiz.hallOfFame.HallOfFameController
+language/learn/quiz/difficulty/Difficulty.java
+ language.learn.quiz.difficulty.Difficulty
+language/learn/quiz/word/Word.java
+ language.learn.quiz.word.Word
+language/learn/quiz/hallOfFame/HallOfFame.java
+ language.learn.quiz.hallOfFame.HallOfFame
+language/learn/quiz/gameLobby/GameLobbyController.java
+ language.learn.quiz.gameLobby.GameLobbyController
+language/learn/quiz/gameSetup/GameSetup.java
+ language.learn.quiz.gameSetup.GameSetup
+language/learn/quiz/gameProcess/GameProcess.java
+ language.learn.quiz.gameProcess.GameProcess
 language/learn/quiz/gameEnd/GameEnd.java
  language.learn.quiz.gameEnd.GameEnd
 language/learn/quiz/game/Game.java
  language.learn.quiz.game.Game
-language/learn/quiz/process/GameProcess.java
- language.learn.quiz.process.GameProcess
-language/learn/quiz/Additional.java
- language.learn.quiz.Additional
-language/learn/quiz/lobby/LobbyController.java
- language.learn.quiz.lobby.LobbyController
-language/learn/quiz/Main.java
- language.learn.quiz.Main
-language/learn/quiz/transitions/Transitions.java
- language.learn.quiz.transitions.Transitions
-language/learn/quiz/difficulty/Difficulty.java
- language.learn.quiz.difficulty.Difficulty
-language/learn/quiz/languages/Languages.java
- language.learn.quiz.languages.Languages
-language/learn/quiz/state/GameState.java
- language.learn.quiz.state.GameState
-language/learn/quiz/gameSetup/GameSetup.java
- language.learn.quiz.gameSetup.GameSetup
+language/learn/quiz/gameState/GameState.java
+ language.learn.quiz.gameState.GameState
 language/learn/quiz/CSV/CSVFileWithWords/CSVFileWithWords.java
  language.learn.quiz.CSV.CSVFileWithWords.CSVFileWithWords
-language/learn/quiz/user/User.java
- language.learn.quiz.user.User
-language/learn/quiz/process/GameProcessController.java
- language.learn.quiz.process.GameProcessController
- language.learn.quiz.process.GameProcessController$1
- language.learn.quiz.process.GameProcessController$2
-language/learn/quiz/word/Word.java
- language.learn.quiz.word.Word
+language/learn/quiz/gameLobby/GameLobby.java
+ language.learn.quiz.gameLobby.GameLobby
+language/learn/quiz/gameEnd/GameEndController.java
+ language.learn.quiz.gameEnd.GameEndController
+language/learn/quiz/gameProcess/GameProcessController.java
+ language.learn.quiz.gameProcess.GameProcessController
+language/learn/quiz/Main.java
+ language.learn.quiz.Main
+language/learn/quiz/hallOfFame/HallOfFameController.java
+ language.learn.quiz.hallOfFame.HallOfFameController
 language/learn/quiz/gameSetup/GameSetupController.java
  language.learn.quiz.gameSetup.GameSetupController
  language.learn.quiz.gameSetup.GameSetupController$1

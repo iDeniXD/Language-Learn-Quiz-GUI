@@ -18,6 +18,7 @@ public class GameSetup {
     private static void loadRoot() {
         root = getRoot();
         show(root);
+        // Futher actions will continue in GameSetupController method initialize()
     }
 
     // Get root: GameSetup root.
@@ -35,12 +36,15 @@ public class GameSetup {
     private static void show(Parent root) {
         Main.setRoot(root);
     }
+    // When new record appears or user ends the game
     public static void resetScene(){
         root = null;
     }
 
 
+    // When game is setup
     public static void launchGame() {
+        // These variables - game options/settings
         Game.start(
                 Difficulty.getWords().get(GameSetupController.difficultyChosen.intValue()).shortValue(),
                 GameSetupController.typeOfGameChosen,

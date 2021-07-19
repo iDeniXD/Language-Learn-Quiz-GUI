@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" styleClass="MainPanel" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.lobby.LobbyController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" styleClass="MainPanel" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="language.learn.quiz.gameLobby.GameLobbyController">
    <children>
       <Button layoutX="37.0" layoutY="83.0" mnemonicParsing="false" onAction="#Play" prefHeight="128.0" prefWidth="226.0" styleClass="lobbyButton" text="Play" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="83.0">
          <font>
@@ -49,6 +49,6 @@
    </children>
    <stylesheets>
       <URL value="@../style.css" />
-      <URL value="@Lobby.css" />
+      <URL value="@GameLobby.css" />
    </stylesheets>
 </AnchorPane>

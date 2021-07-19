@@ -1,28 +1,14 @@
 package language.learn.quiz.nodes;
 
-import javafx.animation.*;
+import javafx.animation.ScaleTransition;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.effect.BlurType;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
-import java.security.Key;
-
 public class PointsLabel extends Label {
-    public PointsLabel() {
-        initialize();
-    }
 
     public PointsLabel(String text) {
         super(text);
-        initialize();
-    }
-
-    public PointsLabel(String text, Node graphic) {
-        super(text, graphic);
         initialize();
     }
 
@@ -36,12 +22,14 @@ public class PointsLabel extends Label {
     }
 
     private void setListener() {
+        // When text is changed
         this.textProperty().addListener(e -> {
             doHighlightTransition();
         });
     }
 
     private void doHighlightTransition() {
+        // A little enlargement in order to attract attention
         ScaleTransition scaleTransition =
                 new ScaleTransition(Duration.millis(80), this);
         scaleTransition.setFromX(3f);

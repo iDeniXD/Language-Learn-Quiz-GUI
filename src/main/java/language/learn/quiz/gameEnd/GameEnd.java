@@ -3,7 +3,7 @@ package language.learn.quiz.gameEnd;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import language.learn.quiz.Main;
-import language.learn.quiz.state.GameState;
+import language.learn.quiz.gameState.GameState;
 
 import java.io.IOException;
 

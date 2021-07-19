@@ -1,10 +1,10 @@
-package language.learn.quiz.process;
+package language.learn.quiz.gameProcess;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import language.learn.quiz.Main;
 import language.learn.quiz.game.Game;
-import language.learn.quiz.state.GameState;
+import language.learn.quiz.gameState.GameState;
 
 import java.io.IOException;
 

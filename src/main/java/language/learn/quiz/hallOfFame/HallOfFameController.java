@@ -11,21 +11,18 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import language.learn.quiz.CSV.CSVFileWithRecords.CSVFileWithRecords;
-import language.learn.quiz.Main;
-import language.learn.quiz.lobby.Lobby;
+import language.learn.quiz.gameLobby.GameLobby;
 
 import java.util.List;
 
 public class HallOfFameController {
-
+    @FXML
+    GridPane GridPaneWithRecords;
 
     @FXML
     public void initialize(){
         setup();
     }
-
-    @FXML
-    GridPane GridPaneWithRecords;
     private void setup() {
         // Show table of records
         showRecords();
@@ -81,14 +78,17 @@ public class HallOfFameController {
             row.setMaxHeight(200f);
             row.setVgrow(Priority.ALWAYS);
             row.setValignment(VPos.CENTER);
-//            How did i found out exactly these fields must be set? Do sout of every row.get... method and compare them
+//            How did i find out exactly these fields must be set? Do sout of every row.get... method and compare them
         });
     }
     private void addRecordToGridPane(GridPane gp, int i, String[] strings) {
+        // Each record cell is going to be a label
         Label recordLabel;
         for (int j = 0; j < strings.length; j++) {
             recordLabel = new Label(strings[j]);
+            // Paddings relatively to the cell it is in
             recordLabel.setPadding(new Insets(10));
+            // Header record will be bold
             if (i==0)
                 recordLabel.setStyle("-fx-font-weight: BOLD;");
             gp.add(recordLabel,j,i);
@@ -96,6 +96,6 @@ public class HallOfFameController {
     }
 
     public void goToLobby(ActionEvent actionEvent) {
-        Lobby.loadScene();
+        GameLobby.loadScene();
     }
 }
